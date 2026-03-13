@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ToorYousuf – Homemade Halal Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #c9a84c; --gold-light: #e8c97a; --dark: #1a1008; --dark2: #2c1d0e;
+  --cream: #fdf6e3; --warm: #f5e6c8; --text: #3d2b1f; --green: #2d5a3d;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+img { display: block; }
+a { text-decoration: none; }
+
+/* TOP BANNER */
+.top-banner { background: var(--green); padding: 10px 5%; text-align: center; }
+.top-banner p { color: #fff; font-size: 0.82rem; letter-spacing: 0.8px; font-weight: 600; }
+.top-banner span { color: var(--gold-light); }
+
+/* NAVIGATION */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 9999;
+  background: rgba(26,16,8,0.97); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 5%; border-bottom: 1px solid rgba(201,168,76,0.25);
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 900; color: var(--gold); letter-spacing: 1px; line-height: 1; }
+.logo span { color: #fff; font-style: italic; }
+.logo small { display: block; font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-family: 'Lato', sans-serif; font-style: normal; font-weight: 400; margin-top: 2px; }
+.nav-links { display: flex; gap: 26px; list-style: none; }
+.nav-links a { color: #ccc; font-size: 0.82rem; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 600; transition: color 0.25s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--dark); border: none; padding: 10px 24px; border-radius: 30px; font-weight: 700; font-size: 0.82rem; cursor: pointer; letter-spacing: 0.5px; transition: background 0.25s, transform 0.2s; white-space: nowrap; }
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--gold); display: block; border-radius: 2px; transition: 0.3s; }
+.mobile-menu { display: none; position: fixed; top: 58px; left: 0; right: 0; background: rgba(20,12,5,0.98); z-index: 9998; padding: 20px 5% 30px; border-bottom: 1px solid rgba(201,168,76,0.2); flex-direction: column; gap: 6px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: #ddd; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .mob-cta { background: var(--gold); color: var(--dark); text-align: center; padding: 13px; border-radius: 30px; margin-top: 12px; font-weight: 700; }
+
+/* HERO */
+.hero { min-height: 100vh; background: linear-gradient(150deg,#0f0804 0%,#1e1208 40%,#2c1a0a 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 5% 80px; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1563379091339-03246963d96c?w=1800&q=80') center/cover no-repeat; opacity: 0.13; }
+.hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at center,transparent 30%,rgba(10,6,2,0.7) 100%); }
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(201,168,76,0.5); color: var(--gold); font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; padding: 7px 20px; border-radius: 30px; margin-bottom: 28px; animation: fadeUp 0.8s ease both; backdrop-filter: blur(4px); background: rgba(201,168,76,0.07); }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,8vw,6.5rem); font-weight: 900; color: #fff; line-height: 1.04; margin-bottom: 20px; animation: fadeUp 0.9s 0.1s ease both; }
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero-sub { font-size: clamp(0.95rem,2vw,1.15rem); color: rgba(255,255,255,0.65); max-width: 530px; margin: 0 auto 40px; line-height: 1.85; animation: fadeUp 1s 0.2s ease both; }
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s 0.3s ease both; margin-bottom: 60px; }
+.btn-gold { background: var(--gold); color: var(--dark); padding: 15px 38px; border-radius: 40px; font-weight: 700; font-size: 0.92rem; letter-spacing: 0.5px; transition: all 0.3s; border: 2px solid var(--gold); }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(201,168,76,0.4); }
+.btn-ghost { color: #fff; padding: 15px 38px; border-radius: 40px; font-weight: 600; font-size: 0.92rem; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+.hero-stats { display: flex; gap: 50px; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s 0.4s ease both; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 5px; }
+.hero-scroll { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.3); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; animation: bounce 2s infinite; }
+.hero-scroll::after { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom,rgba(201,168,76,0.5),transparent); }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(6px);} }
+
+/* SECTION COMMONS */
+section { padding: 90px 5%; }
+.sec-tag { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem,4vw,3rem); font-weight: 900; color: var(--dark); line-height: 1.18; margin-bottom: 14px; }
+.sec-title em { color: var(--gold); font-style: italic; }
+.sec-sub { color: #7a5f50; line-height: 1.85; max-width: 560px; }
+.divider { width: 55px; height: 3px; background: var(--gold); margin: 18px 0; border-radius: 2px; }
+.divider.center { margin: 18px auto; }
+
+/* ABOUT */
+.about { background: #fff; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
+.about-img-wrap { position: relative; }
+.about-img { width: 100%; height: 460px; object-fit: cover; border-radius: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.13); }
+.about-seal { position: absolute; bottom: -22px; right: -22px; width: 110px; height: 110px; background: var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 0.75rem; color: var(--dark); text-align: center; line-height: 1.3; box-shadow: 0 8px 30px rgba(201,168,76,0.45); border: 4px solid #fff; }
+.about-seal span { font-size: 1.4rem; }
+.about-features { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
+.feat { display: flex; align-items: flex-start; gap: 16px; padding: 16px 18px; background: var(--cream); border-radius: 12px; border-left: 3px solid var(--gold); transition: transform 0.2s; }
+.feat:hover { transform: translateX(4px); }
+.feat-icon { font-size: 1.5rem; flex-shrink: 0; }
+.feat h4 { font-weight: 700; font-size: 0.92rem; color: var(--dark); margin-bottom: 3px; }
+.feat p { font-size: 0.84rem; color: #7a5f50; line-height: 1.6; }
+
+/* MENU */
+.menu-sec { background: var(--cream); }
+.menu-head { text-align: center; margin-bottom: 44px; }
+.menu-head .sec-sub { margin: 0 auto; }
+.menu-tabs { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
+.tab { padding: 9px 22px; border-radius: 30px; border: 1.5px solid #d9c9b0; background: transparent; font-size: 0.83rem; font-weight: 700; cursor: pointer; transition: all 0.22s; color: var(--text); }
+.tab:hover, .tab.active { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 26px; max-width: 1250px; margin: 0 auto; }
+.m-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.07); transition: transform 0.3s, box-shadow 0.3s; }
+.m-card:hover { transform: translateY(-7px); box-shadow: 0 16px 45px rgba(0,0,0,0.13); }
+.m-card-img { width: 100%; height: 195px; object-fit: cover; transition: transform 0.4s; }
+.m-card:hover .m-card-img { transform: scale(1.04); }
+.m-card-body { padding: 18px 20px 22px; }
+.m-card-cat { font-size: 0.67rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 6px; }
+.m-card-name { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 700; color: var(--dark); margin-bottom: 7px; line-height: 1.3; }
+.m-card-desc { font-size: 0.82rem; color: #8a6a58; line-height: 1.65; margin-bottom: 16px; }
+.m-card-footer { display: flex; align-items: center; justify-content: space-between; }
+.m-price { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 900; color: var(--green); }
+.m-add { background: var(--dark); color: #fff; border: none; padding: 8px 18px; border-radius: 25px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background 0.22s; }
+.m-add:hover { background: var(--gold); color: var(--dark); }
+.m-card { display: none; }
+.m-card.show { display: block; }
+
+/* PLATTERS */
+.platters-sec { background: linear-gradient(145deg,var(--dark) 0%,var(--dark2) 60%,#1c1005 100%); text-align: center; position: relative; overflow: hidden; }
+.platters-sec::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1567337710282-00832b415979?w=1400&q=80') center/cover no-repeat; opacity: 0.06; }
+.platters-sec .sec-tag, .platters-sec .sec-title { color: #fff; position: relative; }
+.platters-sec .sec-sub { color: rgba(255,255,255,0.55); margin: 0 auto 50px; position: relative; }
+.platter-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 22px; max-width: 1100px; margin: 0 auto; position: relative; }
+.p-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 18px; padding: 30px 24px 26px; text-align: left; transition: all 0.3s; }
+.p-card:hover { background: rgba(201,168,76,0.09); border-color: var(--gold); transform: translateY(-5px); }
+.p-icon { font-size: 2.2rem; margin-bottom: 16px; }
+.p-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; font-weight: 700; margin-bottom: 10px; }
+.p-includes { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 18px; }
+.p-price { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 900; color: var(--gold); }
+
+/* DRINKS */
+.drinks-sec { background: #fff; }
+.drinks-inner { max-width: 1100px; margin: 0 auto; }
+.drinks-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(230px,1fr)); gap: 16px; margin-top: 42px; }
+.d-card { background: var(--cream); border-radius: 14px; padding: 20px 22px; display: flex; align-items: center; gap: 16px; border: 1.5px solid #e8d9c0; transition: all 0.25s; }
+.d-card:hover { border-color: var(--gold); background: var(--warm); transform: translateY(-3px); }
+.d-icon { font-size: 1.9rem; flex-shrink: 0; }
+.d-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 4px; }
+.d-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--green); }
+
+/* FROZEN */
+.frozen-sec { background: var(--cream); }
+.frozen-inner { max-width: 1100px; margin: 0 auto; }
+.frozen-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); gap: 18px; margin-top: 44px; }
+.f-card { background: #fff; border-radius: 14px; padding: 22px 24px; border-left: 4px solid var(--gold); box-shadow: 0 2px 14px rgba(0,0,0,0.06); transition: transform 0.25s, box-shadow 0.25s; }
+.f-card:hover { transform: translateX(5px); box-shadow: 0 6px 22px rgba(0,0,0,0.1); }
+.f-name { font-weight: 700; font-size: 0.95rem; color: var(--dark); margin-bottom: 5px; }
+.f-sub { font-size: 0.8rem; color: #999; margin-bottom: 12px; line-height: 1.5; }
+.f-badge { display: inline-block; background: #e6f0eb; color: var(--green); font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; }
+.f-price { font-family: 'Playfair Display', serif; font-weight: 900; color: var(--green); font-size: 1.05rem; margin-top: 10px; }
+
+/* GALLERY STRIP */
+.gallery-strip { background: var(--dark); padding: 0; overflow: hidden; }
+.gallery-strip-inner { display: flex; height: 280px; }
+.gallery-strip-inner img { flex: 1; min-width: 0; object-fit: cover; filter: brightness(0.8) saturate(1.1); transition: flex 0.5s ease, filter 0.4s; }
+.gallery-strip-inner img:hover { flex: 3; filter: brightness(1) saturate(1.3); }
+
+/* CONTACT / ORDER */
+.contact-sec { background: linear-gradient(155deg,var(--dark2) 0%,var(--dark) 100%); text-align: center; }
+.contact-sec .sec-tag, .contact-sec .sec-title { color: #fff; }
+.contact-sec .sec-sub { color: rgba(255,255,255,0.55); margin: 0 auto 50px; }
+.contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 950px; margin: 0 auto 50px; }
+.c-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 16px; padding: 28px 30px; flex: 1; min-width: 200px; max-width: 240px; transition: all 0.3s; text-decoration: none; }
+.c-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); transform: translateY(-4px); }
+.c-icon { font-size: 2rem; margin-bottom: 12px; }
+.c-label { font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 7px; }
+.c-value { font-family: 'Playfair Display', serif; color: #fff; font-size: 1rem; font-weight: 700; line-height: 1.4; }
+.order-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 22px; padding: 44px 40px; max-width: 640px; margin: 0 auto; text-align: left; }
+.order-form h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.6rem; margin-bottom: 26px; text-align: center; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.f-input, .f-select, .f-textarea { width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); border-radius: 10px; color: #fff; font-size: 0.88rem; font-family: 'Lato', sans-serif; outline: none; transition: border 0.25s; margin-bottom: 14px; }
+.f-input::placeholder, .f-textarea::placeholder { color: rgba(255,255,255,0.3); }
+.f-input:focus, .f-select:focus, .f-textarea:focus { border-color: var(--gold); }
+.f-select option { background: #2c1d0e; color: #fff; }
+.f-textarea { height: 110px; resize: vertical; margin-bottom: 0; }
+.f-btn { width: 100%; padding: 15px; background: var(--gold); color: var(--dark); border: none; border-radius: 40px; font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; transition: all 0.3s; margin-top: 14px; }
+.f-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.35); }
+
+/* WHATSAPP FLOAT */
+.wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 9999; background: #25D366; color: #fff; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 25px rgba(37,211,102,0.45); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; }
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 35px rgba(37,211,102,0.55); }
+.wa-tooltip { position: fixed; bottom: 98px; right: 28px; z-index: 9998; background: #fff; color: var(--dark); padding: 8px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; box-shadow: 0 4px 16px rgba(0,0,0,0.15); white-space: nowrap; opacity: 0; transform: translateY(6px); transition: all 0.3s; pointer-events: none; }
+.wa-float:hover ~ .wa-tooltip { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════
+   FOOTER
+═══════════════════════════ */
+footer {
+  background: #0a0603;
+  padding: 55px 5% 36px;
+  text-align: center;
+  border-top: 1px solid rgba(201,168,76,0.12);
+}
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold); margin-bottom: 6px; }
+.footer-logo span { color: #fff; font-style: italic; }
+.footer-tagline { color: rgba(255,255,255,0.3); font-size: 0.78rem; letter-spacing: 0.8px; margin-bottom: 2px; }
+
+/* Footer Nav Links */
+.footer-nav {
+  display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+  margin: 22px 0;
+}
+.footer-nav a {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--gold); }
+
+/* Divider line */
+.f-divider {
+  width: 70px; height: 1px;
+  background: rgba(201,168,76,0.2);
+  margin: 28px auto;
+}
+
+/* Social Section */
+.social-heading {
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+.social-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+/* Each social button */
+.s-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 22px;
+  border-radius: 40px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: transform 0.28s, box-shadow 0.28s, filter 0.28s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+.s-btn svg { flex-shrink: 0; transition: transform 0.28s; }
+.s-btn:hover svg { transform: scale(1.2) rotate(-5deg); }
+
+/* Individual brand colours */
+.s-instagram {
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+}
+.s-instagram:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(253,29,29,0.5);
+  filter: brightness(1.1);
+}
+.s-facebook { background: #1877F2; }
+.s-facebook:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(24,119,242,0.5);
+  background: #1565d8;
+}
+.s-youtube { background: #FF0000; }
+.s-youtube:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(255,0,0,0.5);
+  background: #cc0000;
+}
+.s-tiktok {
+  background: #111;
+  border: 1.5px solid rgba(255,255,255,0.1);
+}
+.s-tiktok:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(105,201,208,0.4);
+  border-color: #69c9d0;
+  background: #222;
+}
+.s-whatsapp { background: #25D366; }
+.s-whatsapp:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(37,211,102,0.5);
+  background: #1fb856;
+}
+
+/* Footer bottom */
+.footer-copy {
+  color: rgba(255,255,255,0.18);
+  font-size: 0.76rem;
+  line-height: 1.9;
+}
+.footer-copy em { color: rgba(201,168,76,0.55); font-style: normal; }
+.footer-hint {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.1);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 50px; }
+  .about-seal { right: 0; bottom: -16px; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 70px 5%; }
+  .gallery-strip-inner { height: 150px; }
+  .order-form { padding: 28px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { gap: 30px; }
+  .contact-cards { flex-direction: column; align-items: center; }
+  .c-card { max-width: 100%; width: 100%; }
+}
+@media (max-width: 520px) {
+  .hero h1 { font-size: 2.4rem; }
+  .s-btn .btn-label { display: none; }
+  .s-btn { width: 50px; height: 50px; padding: 0; border-radius: 50%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP HALAL BANNER -->
+<div class="top-banner">
+  <p>🌙 <span>100% Halal</span> &nbsp;·&nbsp; Homemade Fresh Daily &nbsp;·&nbsp; Pakistani & South African Cuisine &nbsp;·&nbsp; <span>Pre-Orders Welcome</span> 🌙</p>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="logo">Toor<span>Yousuf</span><small>Homemade Halal Kitchen</small></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#platters">Platters</a></li>
+    <li><a href="#drinks">Drinks</a></li>
+    <li><a href="#frozen">Frozen</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now 🛒</button>
+  <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#menu" onclick="closeMobile()">Menu</a>
+  <a href="#platters" onclick="closeMobile()">Platters</a>
+  <a href="#drinks" onclick="closeMobile()">Drinks</a>
+  <a href="#frozen" onclick="closeMobile()">Frozen Items</a>
+  <a href="#order" class="mob-cta" onclick="closeMobile()">Place an Order 🛒</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Halal &nbsp;·&nbsp; Homemade &nbsp;·&nbsp; Wholesome</div>
+    <h1>Authentic Flavours,<br/><em>Made With Love</em></h1>
+    <p class="hero-sub">From our family kitchen to your table — ToorYousuf brings bold, soul-warming Pakistani & South African halal food, cooked fresh every single day.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold">Explore Full Menu</a>
+      <a href="#order" class="btn-ghost">Place an Order</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">50+</div><div class="stat-label">Menu Items</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Halal</div></div>
+      <div><div class="stat-num">Fresh</div><div class="stat-label">Daily Made</div></div>
+      <div><div class="stat-num">❤️</div><div class="stat-label">Home Kitchen</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=900&q=85" alt="Homemade halal food" class="about-img"/>
+      <div class="about-seal"><span>🕌</span>Halal<br/>Certified</div>
+    </div>
+    <div class="reveal reveal-d1">
+      <p class="sec-tag">Our Story</p>
+      <h2 class="sec-title">Home Cooking That<br/>Warms the Soul</h2>
+      <div class="divider"></div>
+      <p class="sec-sub">ToorYousuf is a family home-kitchen specialising in wholesome halal meals inspired by the finest Pakistani and South African cuisine. Every dish is made fresh to order — no preservatives, no shortcuts, just real food made with genuine care and generations of flavour.</p>
+      <div class="about-features">
+        <div class="feat"><div class="feat-icon">🕌</div><div><h4>100% Halal</h4><p>Every ingredient is strictly halal sourced and prepared with utmost care.</p></div></div>
+        <div class="feat"><div class="feat-icon">🍳</div><div><h4>Made Fresh Daily</h4><p>No reheated shortcuts — your meal is cooked fresh the moment you order.</p></div></div>
+        <div class="feat"><div class="feat-icon">🏡</div><div><h4>Generations of Flavour</h4><p>Recipes passed down through our family, bringing authentic taste every time.</p></div></div>
+        <div class="feat"><div class="feat-icon">📱</div><div><h4>Easy WhatsApp Ordering</h4><p>Just message us to place your order — simple, quick, and personal.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="gallery-strip">
+  <div class="gallery-strip-inner">
+    <img src="https://images.unsplash.com/photo-1574653853027-5382a3d23a15?w=600&q=80" alt="Nihari"/>
+    <img src="https://www.cookingcarnival.com/wp-content/uploads/2025/09/Vegetable-Dum-Biryani-5.jpg" alt="Biryani"/>
+    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Bunny Chow"/>
+    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80" alt="Fish"/>
+    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Samosas"/>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="menu-sec" id="menu">
+  <div class="menu-head reveal">
+    <p class="sec-tag">Full Menu</p>
+    <h2 class="sec-title">What We're <em>Serving</em></h2>
+    <div class="divider center"></div>
+    <p class="sec-sub">Fresh homemade meals across all your favourite categories. Prices shown per portion.</p>
+  </div>
+  <div class="menu-tabs">
+    <button class="tab active" onclick="filterMenu('all',this)">All Items</button>
+    <button class="tab" onclick="filterMenu('mains',this)">Mains & Curries</button>
+    <button class="tab" onclick="filterMenu('bunny',this)">Bunny Chow</button>
+    <button class="tab" onclick="filterMenu('burgers',this)">Burgers & Wraps</button>
+    <button class="tab" onclick="filterMenu('rice',this)">Rice & Biryani</button>
+    <button class="tab" onclick="filterMenu('fish',this)">Fish</button>
+    <button class="tab" onclick="filterMenu('snacks',this)">Snacks & Sides</button>
+  </div>
+  <div class="menu-grid" id="menuGrid">
+    <!-- MAINS -->
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://www.shanazrafiq.com/wp-content/uploads/2016/10/13-DSC_0026.jpg" alt="Mutton Nihari"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Mutton Nihari</h3><p class="m-card-desc">Slow-braised mutton in deep, spiced bone-marrow gravy. A Lahori classic, served all day.</p><div class="m-card-footer"><div class="m-price">R 85</div><button class="m-add" onclick="addItem('Mutton Nihari - R85')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80" alt="Chicken Alfredo"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Chicken Alfredo</h3><p class="m-card-desc">Creamy, buttery pasta tossed with tender chicken strips and parmesan-style sauce.</p><div class="m-card-footer"><div class="m-price">R 60</div><button class="m-add" onclick="addItem('Chicken Alfredo - R60')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7C3x7uPWNhEfK9qyUBD7cit4LKkkY_iCK2w&s" alt="Moong Daal"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Moong Daal</h3><p class="m-card-desc">Wholesome yellow lentil curry tempered with cumin, garlic, and fresh coriander.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Moong Daal - R65')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://www.thedeliciouscrescent.com/wp-content/uploads/2019/05/Chicken-Korma-Square.jpg" alt="Chicken Korma"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Chicken Korma + 2 Rotis</h3><p class="m-card-desc">Mild, fragrant korma cooked in yoghurt and aromatic spices, with 2 fluffy rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Chicken Korma - R80')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa1H-SNqsnEMRUAaTLDhrnDdVHrmfb9iUlaQ&s" alt="Chickpea Curry"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Chickpea Curry + Laccha Paratha</h3><p class="m-card-desc">Bold chana masala paired with crispy, flaky multi-layered laccha parathas.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Chickpea Curry - R75')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoGn9ySUeNxd77Mn-h95GqNcL_QxQIaWohWQ&s" alt="Daal Gosht"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Daal Gosht + 2 Roti</h3><p class="m-card-desc">Hearty lentil and mutton curry, slow-cooked and served with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Daal Gosht - R80')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://clubrangoon.com.hk/wp-content/uploads/2025/04/chicken-liver-curry-recipe-1745483285.jpg" alt="Liver Curry"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Chicken Liver Curry + 2 Roti</h3><p class="m-card-desc">Rich, spiced chicken liver curry served with soft fresh rotis.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Liver Curry - R65')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://www.shanazrafiq.com/wp-content/uploads/2016/10/13-DSC_0026.jpg" alt="Mutton Nihari Roti"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Mutton Nihari + 2 Roti</h3><p class="m-card-desc">Signature mutton nihari paired with 2 warm rotis for the full experience.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Mutton Nihari + 2 Roti - R75')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://recipe52.com/wp-content/uploads/2019/08/Chicken-Nihari-Recipe-instagram.jpg" alt="Chicken Nihari"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Chicken Nihari + 2 Roti</h3><p class="m-card-desc">Classic nihari made with chicken — just as rich and full of flavour.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Chicken Nihari - R70')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqbFFFJ2pio-w0Hc6EKL8nD0Rlbqs5CNiQwQ&s" alt="Beans Egg Curry"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Beans & Boiled Egg Curry + 2 Garlic Rolls + 2 Roti</h3><p class="m-card-desc">Thick bean and egg curry, served with garlic rolls and rotis.</p><div class="m-card-footer"><div class="m-price">R 55</div><button class="m-add" onclick="addItem('Beans & Egg Curry - R55')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://i.ytimg.com/vi/_QleU81UB0o/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDMb9ET4NylXlAkLb6_49V2QxPPsg" alt="Lamb Tibe"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Lamb Tibe (Aujri) Curry + 2 Roti</h3><p class="m-card-desc">Traditional lamb offal curry with bold spices, paired with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Lamb Tibe Curry - R75')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://stewwithsaba.com/wp-content/uploads/2023/07/IMG_5580.jpg" alt="Daal Mash"/><div class="m-card-body"><p class="m-card-cat">Mains & Curries</p><h3 class="m-card-name">Daal Mash + 1 Roti</h3><p class="m-card-desc">Silky white urad daal, restaurant-style, served with a large dpotti roti.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Daal Mash - R70')">+ Add</button></div></div></div>
+    <!-- BUNNY CHOW -->
+    <div class="m-card show" data-cat="bunny"><img class="m-card-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Mutton Bunny Quarter"/><div class="m-card-body"><p class="m-card-cat">Bunny Chow</p><h3 class="m-card-name">Mutton Bunny Chow ¼</h3><p class="m-card-desc">South African icon — mutton curry served inside a hollowed quarter loaf of bread.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Mutton Bunny ¼ - R65')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="bunny"><img class="m-card-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Mutton Bunny Half"/><div class="m-card-body"><p class="m-card-cat">Bunny Chow</p><h3 class="m-card-name">Mutton Bunny Chow ½</h3><p class="m-card-desc">Half-loaf bunny — rich mutton curry piled high in a toasted bread bowl.</p><div class="m-card-footer"><div class="m-price">R 85</div><button class="m-add" onclick="addItem('Mutton Bunny ½ - R85')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="bunny"><img class="m-card-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Chicken Akhni"/><div class="m-card-body"><p class="m-card-cat">Bunny Chow</p><h3 class="m-card-name">Chicken Akhni Meal + Zeila + Salad</h3><p class="m-card-desc">Chicken akhni bunny with traditional zeila sauce and fresh garden salad.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Chicken Akhni Meal - R80')">+ Add</button></div></div></div>
+    <!-- BURGERS & WRAPS -->
+    <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Chicken Burger"/><div class="m-card-body"><p class="m-card-cat">Burgers & Wraps</p><h3 class="m-card-name">Chicken Burger (2 pcs)</h3><p class="m-card-desc">Double homemade chicken patties in toasted buns with fresh toppings.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Chicken Burger x2 - R70')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80" alt="Tikka Wrap"/><div class="m-card-body"><p class="m-card-cat">Burgers & Wraps</p><h3 class="m-card-name">Chicken Tikka Roti Wrap</h3><p class="m-card-desc">Marinated tikka chicken, crisp salad, and garlic sauce wrapped in soft roti.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('Chicken Tikka Wrap - R50')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://assets.unileversolutions.com/recipes-v2/235926.jpg" alt="Spicy Mayo Burger"/><div class="m-card-body"><p class="m-card-cat">Burgers & Wraps</p><h3 class="m-card-name">Spicy Mayo Chicken Burger</h3><p class="m-card-desc">Crispy chicken drizzled with our house spicy mayo — a crowd favourite.</p><div class="m-card-footer"><div class="m-price">R 45</div><button class="m-add" onclick="addItem('Spicy Mayo Burger - R45')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://www.foodiaq.com/wp-content/uploads/2025/01/Butter-chicken.jpg" alt="Butter Chicken Wrap"/><div class="m-card-body"><p class="m-card-cat">Burgers & Wraps</p><h3 class="m-card-name">Butter Chicken + 2 Roti</h3><p class="m-card-desc">Velvety butter chicken curry wrapped in 2 fresh rotis — pure comfort.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Butter Chicken + 2 Roti - R70')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://foxeslovelemons.com/wp-content/uploads/2023/06/Chicken-Shawarma-8.jpg" alt="Shawarma"/><div class="m-card-body"><p class="m-card-cat">Burgers & Wraps</p><h3 class="m-card-name">Laadth Chicken Shawarma</h3><p class="m-card-desc">Loaded Lebanese-style shawarma with garlic sauce, pickles, and fresh salad.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('Chicken Shawarma - R50')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://img.freepik.com/premium-photo/indian-spicy-chicken-tikka-biryani-with-raita-gulab-jamun-served-dish-top-view-grey-background_689047-1265.jpg" alt="Tika Biryani"/><div class="m-card-body"><p class="m-card-cat">Burgers & Wraps</p><h3 class="m-card-name">Chicken Tika Biryani + Rayta</h3><p class="m-card-desc">Fragrant chicken tikka biryani served with cooling homemade rayta.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Tika Biryani + Rayta - R80')">+ Add</button></div></div></div>
+    <!-- RICE -->
+    <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://plus.unsplash.com/premium_photo-1695029505425-32496d18869b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dmVnZXRhYmxlJTIwYmlyeWFuaXxlbnwwfHwwfHx8MA%3D%3D" alt="Veg Biryani"/><div class="m-card-body"><p class="m-card-cat">Rice & Biryani</p><h3 class="m-card-name">Vegetable Biryani</h3><p class="m-card-desc">Fragrant basmati rice layered with spiced fresh vegetables and saffron.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Veg Biryani - R65')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?w=600&q=80" alt="Chicken Biryani"/><div class="m-card-body"><p class="m-card-cat">Rice & Biryani</p><h3 class="m-card-name">Chicken Biryani</h3><p class="m-card-desc">Dum-cooked chicken biryani with whole spices, fried onions, and fresh mint.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Chicken Biryani - R75')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://plus.unsplash.com/premium_photo-1694141251673-1758913ade48?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2hpY2tlbiUyMGZyaWVkJTIwcmljZXxlbnwwfHwwfHx8MA%3D%3D" alt="Chicken Fried Rice"/><div class="m-card-body"><p class="m-card-cat">Rice & Biryani</p><h3 class="m-card-name">Chicken Fried Rice</h3><p class="m-card-desc">Wok-tossed fried rice with chicken, vegetables, and savoury seasoning.</p><div class="m-card-footer"><div class="m-price">R 60</div><button class="m-add" onclick="addItem('Chicken Fried Rice - R60')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://i.pinimg.com/736x/bd/ae/22/bdae2290e73b881a1c238575497b18af.jpg" alt="Kadhi Pakora"/><div class="m-card-body"><p class="m-card-cat">Rice & Biryani</p><h3 class="m-card-name">Kadhi Pakora with Rice</h3><p class="m-card-desc">Tangy yoghurt-based kadhi with crispy fried pakoras over steamed basmati.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Kadhi Pakora + Rice - R80')">+ Add</button></div></div></div>
+    <!-- FISH -->
+    <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80" alt="Grilled Red Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Grilled Red Fish 2 pcs (200g) + Garlic Rolls + Bashews Can</h3><p class="m-card-desc">Chargrilled marinated fish with garlic rolls and a cold Bashews can.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Grilled Red Fish - R100')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Ls5A8SigMacNW3i1etwXlF4op0wyjmsg-w&s" alt="Fish Curry"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Fish Curry + 2 Roti</h3><p class="m-card-desc">Richly spiced fish curry with fresh herbs, served with 2 soft rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Fish Curry + 2 Roti - R80')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600&q=80" alt="Fry Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Fry Fish & Chips (200g)</h3><p class="m-card-desc">Golden battered fried fish with crispy chips — classic and satisfying.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Fry Fish & Chips - R80')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80" alt="Grilled Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Grilled Fish & Chips or Salad (200g)</h3><p class="m-card-desc">Grilled fish with your choice of crispy chips or fresh garden salad.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Grilled Fish & Chips/Salad - R80')">+ Add</button></div></div></div>
+    <!-- SNACKS -->
+    <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://www.indianhealthyrecipes.com/wp-content/uploads/2020/08/aloo-paratha-recipe.jpg" alt="Potato Paratha"/><div class="m-card-body"><p class="m-card-cat">Snacks & Sides</p><h3 class="m-card-name">Potato Paratha</h3><p class="m-card-desc">Crispy flaky flatbread stuffed with spiced masala potato — a breakfast staple.</p><div class="m-card-footer"><div class="m-price">R 45</div><button class="m-add" onclick="addItem('Potato Paratha - R45')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Samosas"/><div class="m-card-body"><p class="m-card-cat">Snacks & Sides</p><h3 class="m-card-name">Frozen Samosa Menu</h3><p class="m-card-desc">Choose from Lamb, Chicken Mince, Sweet Corn Cheese, or Potato samosas — ready to fry.</p><div class="m-card-footer"><div class="m-price">R 45</div><button class="m-add" onclick="addItem('Frozen Samosas - R45')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&q=80" alt="Garlic Rolls"/><div class="m-card-body"><p class="m-card-cat">Snacks & Sides</p><h3 class="m-card-name">Garlic Rolls</h3><p class="m-card-desc">Buttery garlic rolls — perfect as a side to any curry or standalone snack.</p><div class="m-card-footer"><div class="m-price">R 55</div><button class="m-add" onclick="addItem('Garlic Rolls - R55')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://www.watermelon.org/wp-content/uploads/2019/11/fresh-mozzarella-salad.jpg" alt="Fresh Salad"/><div class="m-card-body"><p class="m-card-cat">Snacks & Sides</p><h3 class="m-card-name">Fresh Salad</h3><p class="m-card-desc">Crisp garden salad with fresh tomatoes, cucumber, and onion dressing.</p><div class="m-card-footer"><div class="m-price">R 30</div><button class="m-add" onclick="addItem('Fresh Salad - R30')">+ Add</button></div></div></div>
+    <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&q=80" alt="Butter Rolls"/><div class="m-card-body"><p class="m-card-cat">Snacks & Sides</p><h3 class="m-card-name">Butter Rolls</h3><p class="m-card-desc">Soft, warm butter rolls freshly baked — a simple and delicious side.</p><div class="m-card-footer"><div class="m-price">R 90</div><button class="m-add" onclick="addItem('Butter Rolls - R90')">+ Add</button></div></div></div>
+  </div>
+  <!-- ORDER PANEL -->
+  <div id="orderPanel" style="display:none;max-width:640px;margin:40px auto 0;background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 8px 40px rgba(0,0,0,0.1);">
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:14px;">🛒 Your Selections</h3>
+    <ul id="orderList" style="list-style:none;margin-bottom:16px;"></ul>
+    <a href="#order" class="btn-gold" style="display:block;text-align:center;padding:13px;">Proceed to Order Form ↓</a>
+  </div>
+</section>
+
+<!-- PLATTERS -->
+<section class="platters-sec" id="platters">
+  <p class="sec-tag reveal">Iftar & Family Platters</p>
+  <h2 class="sec-title reveal">Platters for <em>Every Occasion</em></h2>
+  <div class="divider center reveal"></div>
+  <p class="sec-sub reveal">Perfect for iftars, birthdays, and family get-togethers. Pre-order required 24hrs in advance.</p>
+  <div class="platter-grid">
+    <div class="p-card reveal"><div class="p-icon">🍽️</div><div class="p-name">Medium Iftar Platter</div><div class="p-includes">3 Grilled Drumsticks · Baby Potatoes · Butter Roll · Salad · Ideal for 2–3 people</div><div class="p-price">Contact for Price</div></div>
+    <div class="p-card reveal reveal-d1"><div class="p-icon">🪘</div><div class="p-name">Large Iftar Platter</div><div class="p-includes">6 Grilled Drumsticks · Baby Potatoes × 2 · Butter Rolls × 2 · Salad · Feeds 4–6 people</div><div class="p-price">R 90</div></div>
+    <div class="p-card reveal reveal-d2"><div class="p-icon">🐟</div><div class="p-name">Chicken Seekh Kabab Platter</div><div class="p-includes">10 pieces · Chips · 2 Garlic Pita · 2 Butter Roll · 1 Bashews Can</div><div class="p-price">R 80</div></div>
+    <div class="p-card reveal reveal-d3"><div class="p-icon">🥘</div><div class="p-name">Grilled Red Fish Platter</div><div class="p-includes">2 pcs Red Fish (200g) · 2 Garlic Rolls · Bashews Can · Fresh Salad</div><div class="p-price">R 100</div></div>
+    <div class="p-card reveal"><div class="p-icon">🌿</div><div class="p-name">Vegetable Iftar Platter</div><div class="p-includes">Vegetable Biryani · Fresh Salad · Garlic Rolls · Rayta · Samosas</div><div class="p-price">Contact for Price</div></div>
+    <div class="p-card reveal reveal-d1"><div class="p-icon">🥩</div><div class="p-name">Family Braai / BBQ Pack</div><div class="p-includes">Marinated chicken + lamb pieces · Garlic rolls · Salad · Sauces · Pre-order required</div><div class="p-price">Contact for Price</div></div>
+  </div>
+</section>
+
+<!-- DRINKS -->
+<section class="drinks-sec" id="drinks">
+  <div class="drinks-inner">
+    <div class="reveal">
+      <p class="sec-tag">Beverages</p>
+      <h2 class="sec-title">Drinks & <em>Refreshments</em></h2>
+      <div class="divider"></div>
+      <p class="sec-sub">From classic lassis and rose milkshakes to fresh mocktails — something cold for everyone.</p>
+    </div>
+    <div class="drinks-grid">
+      <div class="d-card reveal"><div class="d-icon">🍫</div><div><div class="d-name">Cold Chocolate Lassi</div><div class="d-price">R 40</div></div></div>
+      <div class="d-card reveal reveal-d1"><div class="d-icon">🥭</div><div><div class="d-name">Cold Mango Lassi</div><div class="d-price">R 40</div></div></div>
+      <div class="d-card reveal"><div class="d-icon">🌿</div><div><div class="d-name">Sweet Lassi</div><div class="d-price">R 40</div></div></div>
+      <div class="d-card reveal reveal-d1"><div class="d-icon">🍋</div><div><div class="d-name">Nimbu Pani (550ml)</div><div class="d-price">R 35</div></div></div>
+      <div class="d-card reveal"><div class="d-icon">🍹</div><div><div class="d-name">Fresh Fruit Mocktail Juice</div><div class="d-price">R 45</div></div></div>
+      <div class="d-card reveal reveal-d1"><div class="d-icon">🌸</div><div><div class="d-name">Rose Syrup Milkshake</div><div class="d-price">R 30</div></div></div>
+      <div class="d-card reveal"><div class="d-icon">🥤</div><div><div class="d-name">Bashews Original Cola</div><div class="d-price">R 15</div></div></div>
+      <div class="d-card reveal reveal-d1"><div class="d-icon">🍃</div><div><div class="d-name">Dry Fruit Lassi Collection</div><div class="d-price">R 50</div></div></div>
+      <div class="d-card reveal"><div class="d-icon">🌱</div><div><div class="d-name">Mint Lassi (Sweet or Salty)</div><div class="d-price">R 40</div></div></div>
+      <div class="d-card reveal reveal-d1"><div class="d-icon">🧊</div><div><div class="d-name">Laani (500ml)</div><div class="d-price">R 40</div></div></div>
+      <div class="d-card reveal"><div class="d-icon">🍊</div><div><div class="d-name">Lami Laani (500ml)</div><div class="d-price">R 40</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FROZEN ITEMS -->
+<section class="frozen-sec" id="frozen">
+  <div class="frozen-inner">
+    <div class="reveal">
+      <p class="sec-tag">Ready to Cook</p>
+      <h2 class="sec-title">Frozen <em>Home Goods</em></h2>
+      <div class="divider"></div>
+      <p class="sec-sub">Stock your freezer with our freshly made frozen products — homemade and ready to cook whenever you need them.</p>
+    </div>
+    <div class="frozen-grid">
+      <div class="f-card reveal"><div class="f-name">Lamb Mince Samosas</div><div class="f-sub">Classic South African style · crispy pastry</div><div class="f-badge">🧊 Frozen</div><div class="f-price">R 45 / pack</div></div>
+      <div class="f-card reveal reveal-d1"><div class="f-name">Chicken Mince Samosas</div><div class="f-sub">Spiced chicken filling · ready to fry</div><div class="f-badge">🧊 Frozen</div><div class="f-price">R 45 / pack</div></div>
+      <div class="f-card reveal"><div class="f-name">Sweet Corn & Cheese Samosas</div><div class="f-sub">Creamy sweet corn and melted cheese</div><div class="f-badge">🧊 Frozen</div><div class="f-price">R 45 / pack</div></div>
+      <div class="f-card reveal reveal-d1"><div class="f-name">Potato Samosas</div><div class="f-sub">Spiced masala potato — traditional</div><div class="f-badge">🧊 Frozen</div><div class="f-price">R 45 / pack</div></div>
+      <div class="f-card reveal"><div class="f-name">Frozen Baby Potatoes</div><div class="f-sub">Pre-seasoned, oven or braai ready</div><div class="f-badge">🧊 Frozen</div><div class="f-price">Enquire</div></div>
+      <div class="f-card reveal reveal-d1"><div class="f-name">Marinated Grilled Drumsticks</div><div class="f-sub">Pre-marinated and frozen · grill at home</div><div class="f-badge">🧊 Frozen</div><div class="f-price">Enquire</div></div>
+      <div class="f-card reveal"><div class="f-name">Frozen Vegetable Biryani</div><div class="f-sub">Parboiled and spiced · heat and serve</div><div class="f-badge">🧊 Frozen</div><div class="f-price">Enquire</div></div>
+      <div class="f-card reveal reveal-d1"><div class="f-name">Frozen Chicken Biryani</div><div class="f-sub">Full dum biryani · heat and eat</div><div class="f-badge">🧊 Frozen</div><div class="f-price">Enquire</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER / CONTACT -->
+<section class="contact-sec" id="order">
+  <p class="sec-tag">Get in Touch</p>
+  <h2 class="sec-title">Order <em>Today</em></h2>
+  <div class="divider center"></div>
+  <p class="sec-sub">WhatsApp us for the fastest response, or fill in the form below and we'll confirm your order shortly.</p>
+  <div class="contact-cards">
+    <a href="https://wa.me/27670532477" class="c-card reveal" target="_blank">
+      <div class="c-icon">📱</div><div class="c-label">WhatsApp Us</div><div class="c-value">+27670532477</div>
+    </a>
+    <div class="c-card reveal reveal-d1">
+      <div class="c-icon">⏰</div><div class="c-label">Order Hours</div><div class="c-value">Daily · Pre-order Preferred</div>
+    </div>
+    <div class="c-card reveal reveal-d2">
+      <div class="c-icon">📍</div><div class="c-label">Location</div><div class="c-value">Available on Request</div>
+    </div>
+    <div class="c-card reveal reveal-d3">
+      <div class="c-icon">🕌</div><div class="c-label">Certification</div><div class="c-value">100% Halal Kitchen</div>
+    </div>
+  </div>
+  <div class="order-form reveal">
+    <h3>Quick Order Request</h3>
+    <div class="form-row">
+      <input class="f-input" type="text" placeholder="Your Full Name" id="fname" style="margin-bottom:0;"/>
+      <input class="f-input" type="tel" placeholder="Phone / WhatsApp" id="fphone" style="margin-bottom:0;"/>
+    </div>
+    <input class="f-input" type="text" placeholder="Your Address or Area" id="faddress"/>
+    <select class="f-select" id="fcategory">
+      <option value="">Select Menu Category</option>
+      <option>Mains & Curries</option><option>Bunny Chow</option><option>Burgers & Wraps</option>
+      <option>Rice & Biryani</option><option>Fish</option><option>Iftar / Family Platter</option>
+      <option>Drinks</option><option>Frozen Items</option><option>Mixed Order</option><option>Custom / Other</option>
+    </select>
+    <textarea class="f-textarea" id="fmessage" placeholder="List your items, quantities, and any special requests..."></textarea>
+    <button class="f-btn" onclick="submitOrder()">🛒 &nbsp;Submit Order Request</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER WITH SOCIAL MEDIA
+═══════════════════════════════════════ -->
+<footer>
+
+  <!-- Brand -->
+  <div class="footer-logo">Toor<span>Yousuf</span></div>
+  <p class="footer-tagline">Homemade Halal Kitchen &nbsp;·&nbsp; Pakistani & South African Cuisine &nbsp;·&nbsp; Est. 2024</p>
+
+  <!-- Page Links -->
+  <div class="footer-nav">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#platters">Platters</a>
+    <a href="#drinks">Drinks</a>
+    <a href="#frozen">Frozen</a>
+    <a href="#order">Order Now</a>
+  </div>
+
+  <div class="f-divider"></div>
+
+  <!-- Social Media -->
+  <p class="social-heading">Follow &amp; Connect With Us</p>
+
+  <div class="social-row">
+
+    <!-- INSTAGRAM — opens instagram.com/tooryousuf in a new tab -->
+    <a href="https://www.instagram.com/tooryousuf/" target="_blank" rel="noopener noreferrer" class="s-btn s-instagram" title="Follow on Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      <span class="btn-label">Instagram</span>
+    </a>
+
+    <!-- FACEBOOK — opens facebook.com/tooryousuf in a new tab -->
+    <a href="https://www.facebook.com/yousuf.toor.5" target="_blank" rel="noopener noreferrer" class="s-btn s-facebook" title="Like on Facebook">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+      <span class="btn-label">Facebook</span>
+    </a>
+
+    <!-- YOUTUBE — opens youtube.com/@tooryousuf in a new tab -->
+    <a href="https://www.youtube.com/@tooryousuf" target="_blank" rel="noopener noreferrer" class="s-btn s-youtube" title="Subscribe on YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+      <span class="btn-label">YouTube</span>
+    </a>
+
+    <!-- TIKTOK — opens tiktok.com/@tooryousuf in a new tab -->
+    <a href="https://vt.tiktok.com/ZSmg4whh2/" target="_blank" rel="noopener noreferrer" class="s-btn s-tiktok" title="Follow on TikTok">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.82 1.55V6.78a4.85 4.85 0 01-1.05-.09z"/>
+      </svg>
+      <span class="btn-label">TikTok</span>
+    </a>
+
+    <!-- WHATSAPP — opens WhatsApp chat in a new tab -->
+    <a href="https://wa.me/27670532477" target="_blank" rel="noopener noreferrer" class="s-btn s-whatsapp" title="Chat on WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <span class="btn-label">WhatsApp</span>
+    </a>
+
+  </div>
+
+  <div class="f-divider"></div>
+
+  <!-- Copyright -->
+  <p class="footer-copy">© 2025 <em>ToorYousuf Homemade Halal Kitchen</em> · Made with ❤️ in every dish · All food is 100% Halal</p>
+  <p class="footer-hint">💡 To use your real social media pages, replace the URLs above (e.g. instagram.com/tooryousuf) with your actual profile links.</p>
+
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/27670532477" class="wa-float" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<div class="wa-tooltip">Chat on WhatsApp 💬</div>
+
+<!-- TOAST -->
+<div id="toast" style="position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:#2d5a3d;color:#fff;padding:12px 26px;border-radius:30px;font-size:0.88rem;font-weight:700;z-index:99999;opacity:0;transition:all 0.4s;pointer-events:none;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,0.2);">✅ Item added to your order!</div>
+
+<script>
+function toggleMobile(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMobile(){ document.getElementById('mobileMenu').classList.remove('open'); }
+
+function filterMenu(cat, btn){
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.m-card').forEach(c => c.classList.toggle('show', cat==='all' || c.dataset.cat===cat));
+}
+
+const orderItems = [];
+function renderList(){
+  const list = document.getElementById('orderList');
+  list.innerHTML = '';
+  orderItems.forEach((item, i) => {
+    const li = document.createElement('li');
+    li.style.cssText = 'padding:8px 0;border-bottom:1px solid #f0e8dc;font-size:0.88rem;display:flex;justify-content:space-between;align-items:center;';
+    li.innerHTML = `<span>• ${item}</span><button onclick="removeItem(${i})" style="background:none;border:none;color:#c0392b;cursor:pointer;font-weight:700;padding:2px 8px;">✕</button>`;
+    list.appendChild(li);
+  });
+  document.getElementById('fmessage').value = orderItems.join('\n');
+}
+function addItem(name){
+  orderItems.push(name);
+  document.getElementById('orderPanel').style.display = 'block';
+  renderList();
+  const t = document.getElementById('toast');
+  t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(20px)'; }, 2200);
+}
+function removeItem(i){
+  orderItems.splice(i,1);
+  if(!orderItems.length) document.getElementById('orderPanel').style.display='none';
+  renderList();
+}
+
+function submitOrder(){
+  const name = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  if(!name || !phone){ alert('Please enter your name and phone number.'); return; }
+  const text = encodeURIComponent(
+    `*🛒 New Order – ToorYousuf*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${document.getElementById('faddress').value||'Not provided'}\n*Category:* ${document.getElementById('fcategory').value||'Not selected'}\n\n*Order:*\n${document.getElementById('fmessage').value||'No items listed'}`
+  );
+  window.open(`https://wa.me/27670532477?text=${text}`, '_blank');
+}
+
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.addEventListener('click', e => {
+  const menu = document.getElementById('mobileMenu');
+  if(menu.classList.contains('open') && !document.getElementById('navbar').contains(e.target) && !menu.contains(e.target))
+    menu.classList.remove('open');
+});
+</script>
+</body>
+</html>
