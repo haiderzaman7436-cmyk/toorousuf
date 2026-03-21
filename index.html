@@ -59,41 +59,14 @@ nav{background:rgba(26,16,8,0.97);backdrop-filter:blur(12px);display:flex;align-
 .mob-today-btn{background:rgba(201,168,76,0.1);border:1.5px solid rgba(201,168,76,0.4);color:var(--gold);text-align:center;padding:13px;border-radius:12px;margin-top:12px;font-weight:700;font-size:0.9rem;cursor:pointer;}
 .mobile-menu .mob-order{background:var(--gold);color:var(--dark);text-align:center;padding:13px;border-radius:30px;margin-top:10px;font-weight:700;}
 
-/* ══════════════════════════════════════
-   MODAL — Mobile-first fix
-══════════════════════════════════════ */
-.modal-overlay{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  background:rgba(6,3,0,0.92);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  display:none;
-  align-items:flex-start;
-  justify-content:center;
-  padding:14px;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:99999;background:rgba(6,3,0,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;align-items:flex-start;justify-content:center;padding:14px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .modal-overlay.open{display:flex;animation:mFade .25s ease;}
 @keyframes mFade{from{opacity:0;}to{opacity:1;}}
-
-.modal-box{
-  background:var(--dark2);
-  border:1px solid rgba(201,168,76,.28);
-  border-radius:22px;
-  width:100%;
-  max-width:500px;
-  margin:auto;
-  animation:mPop .35s cubic-bezier(.34,1.56,.64,1) both;
-  scrollbar-width:thin;
-  scrollbar-color:rgba(201,168,76,0.3) transparent;
-}
+.modal-box{background:var(--dark2);border:1px solid rgba(201,168,76,.28);border-radius:22px;width:100%;max-width:500px;margin:auto;animation:mPop .35s cubic-bezier(.34,1.56,.64,1) both;scrollbar-width:thin;scrollbar-color:rgba(201,168,76,0.3) transparent;}
 .modal-box::-webkit-scrollbar{width:4px;}
 .modal-box::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.3);border-radius:4px;}
 @keyframes mPop{from{opacity:0;transform:translateY(28px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
-
 .modal-head{background:linear-gradient(135deg,#0c0601 0%,#261404 100%);padding:22px 24px 18px;border-bottom:1px solid rgba(201,168,76,0.14);border-radius:22px 22px 0 0;display:flex;align-items:flex-start;justify-content:space-between;position:sticky;top:0;z-index:3;}
 .modal-day-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.28);color:var(--gold);font-size:0.63rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:9px;}
 .modal-title{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;color:#fff;line-height:1.1;margin-bottom:4px;}
@@ -117,11 +90,8 @@ nav{background:rgba(26,16,8,0.97);backdrop-filter:blur(12px);display:flex;align-
 .mi-name{font-weight:700;font-size:0.87rem;color:#fff;line-height:1.3;}
 .mi-desc{font-size:0.72rem;color:rgba(255,255,255,0.36);margin-top:2px;line-height:1.4;}
 .mi-price{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:900;color:var(--gold);flex-shrink:0;white-space:nowrap;}
-
-/* Sunday closed notice */
 .sunday-notice{background:linear-gradient(135deg,#1a0f00,#2c1d0e);border:1.5px dashed rgba(201,168,76,0.4);border-radius:14px;padding:24px 20px;text-align:center;font-size:0.93rem;line-height:1.8;color:rgba(255,255,255,0.8);margin-bottom:18px;}
 .sunday-notice strong{color:var(--gold);}
-
 .modal-wa-btn{width:100%;padding:15px;background:#25D366;color:#fff;border:none;border-radius:40px;font-size:0.92rem;font-weight:700;cursor:pointer;letter-spacing:0.4px;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:9px;}
 .modal-wa-btn:hover{background:#1fb856;transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.4);}
 .modal-note{text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.18);margin-top:11px;line-height:1.7;}
@@ -297,6 +267,9 @@ footer{background:#0a0603;padding:55px 5% 36px;text-align:center;border-top:1px 
 .reveal-d2{transition-delay:.2s;}
 .reveal-d3{transition-delay:.3s;}
 
+/* EID POPUP */
+@keyframes eidSlideUp{from{opacity:0;transform:translateY(40px) scale(0.94);}to{opacity:1;transform:translateY(0) scale(1);}}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:50px;}
@@ -332,19 +305,32 @@ footer{background:#0a0603;padding:55px 5% 36px;text-align:center;border-top:1px 
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════
+     EID UL FITR HOLIDAY POPUP
+═══════════════════════════════════════ -->
+<div id="eidOverlay" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;overflow-y:auto;">
+  <div style="position:relative;max-width:460px;width:100%;margin:auto;animation:eidSlideUp .45s cubic-bezier(.34,1.56,.64,1) both;">
+    <button onclick="closeEidPopup()" aria-label="Close" style="position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.15);border:1.5px solid rgba(201,168,76,0.6);color:#c9a84c;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .2s;" onmouseover="this.style.background='rgba(201,168,76,0.35)'" onmouseout="this.style.background='rgba(201,168,76,0.15)'">&#x2715;</button>
+    <img
+      id="eidImg"
+      src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/654588605_18054030890508640_6368582134694846468_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=109&ig_cache_key=Mzg1NzIyODA5MTc4NTc0MzcwNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzl4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=PS1RM0ZKcYkQ7kNvwH3_Fnk&_nc_oc=AdqUBI0ahOkh-85hrsxPLxZNifkuT4KMxUfQFpASEBm8P8jn-UDEFMtAdJ-xZtQGOi4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=gsnWaC6p3CscIzJXR7WhXg&_nc_ss=7a30f&oh=00_AfwXuIG4j7kUctxLlNi7HYBOe_u-hgrZFeYeOD7qU2M8RQ&oe=69C40170"
+      alt="Eid ul Fitr Mubarak – ToorYousuf Kitchen Closed Saturday & Sunday"
+      style="width:100%;display:block;border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,0.7),0 0 0 1px rgba(201,168,76,0.25);"
+    />
+  </div>
+</div>
+<!-- ═══════════════════════════════════════ -->
+
 <div id="siteHeader">
-  <!-- TICKER -->
   <div class="ticker-bar">
     <div class="ticker-label"><span>🍽️</span><span id="dayLabel">TODAY</span></div>
     <div class="ticker-scroll-wrap">
       <div class="ticker-track" id="tickerTrack"></div>
     </div>
   </div>
-  <!-- HALAL STRIP -->
   <div class="halal-strip">
     <p>🌙 <span>100% Halal</span> &nbsp;·&nbsp; Homemade Fresh Daily &nbsp;·&nbsp; Pakistani &amp; South African Cuisine &nbsp;·&nbsp; <span>Pre-Orders Welcome</span> 🌙</p>
   </div>
-  <!-- NAV -->
   <nav id="navbar">
     <div class="logo">Toor<span>Yousuf</span><small>Homemade Halal Kitchen</small></div>
     <ul class="nav-links">
@@ -361,7 +347,6 @@ footer{background:#0a0603;padding:55px 5% 36px;text-align:center;border-top:1px 
       <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
     </div>
   </nav>
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="closeMob()">About</a>
     <a href="#menu" onclick="closeMob()">Menu</a>
@@ -373,7 +358,7 @@ footer{background:#0a0603;padding:55px 5% 36px;text-align:center;border-top:1px 
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- DAILY MENU MODAL -->
 <div class="modal-overlay" id="todayModal" onclick="overlayClick(event)">
   <div class="modal-box">
     <div class="modal-head">
@@ -481,67 +466,60 @@ footer{background:#0a0603;padding:55px 5% 36px;text-align:center;border-top:1px 
   </div>
   <div class="menu-grid" id="menuGrid">
   <!-- MAINS -->
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/652662076_18052247018508640_3783917906542629921_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1MjYyMDU3OTcxMTI0ODExNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=iuuv65doaYwQ7kNvwHhKCJP&_nc_oc=Adn3N16_g29kZTqJTFUe8qqa7gTfBCAZFVGOvE2vjVRVm0Cfh6vVwnzs91H1rNQufXI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=8Li6nnE_EYkcwnZsH7WDzA&_nc_ss=8&oh=00_AfxfEmhwxQHqVcNn-61az-fQLhB0adOLpYvoFTnkEKLNtw&oe=69BB1D53" alt="Mutton Nihari"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Mutton Nihari</h3><p class="m-card-desc">Slow-braised mutton in deep, spiced bone-marrow gravy. A Lahori classic.</p><div class="m-card-footer"><div class="m-price">R 85</div><button class="m-add" onclick="addItem('Mutton Nihari - R85')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="	https://www.budgetbytes.com/wp-content/uploads/2022/07/Chicken-Alfredo-V3.jpg" alt="Chicken Alfredo"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chicken Alfredo</h3><p class="m-card-desc">Creamy pasta tossed with tender chicken strips and parmesan-style sauce.</p><div class="m-card-footer"><div class="m-price">R 60</div><button class="m-add" onclick="addItem('Chicken Alfredo - R60')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/651607835_18052230203508640_2539403849885141100_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzg1MjU3ODg2ODQ1NjkxMDA4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=h752pjJVkt0Q7kNvwF8g7ls&_nc_oc=Adr-aoQF991Tw68l1Z_v8Zz3sd-pPGruKuzlxO-f1P0GsYyd5iuaZKW_v6VIl7tXftc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=ab-knEVtNYzovmYYgDWJiQ&_nc_ss=7a30f&oh=00_Afy211W0bUAc34jIDlyHjHGntQVwcSY1Q8_wlgRGG_cdqA&oe=69C436B5" alt="Mutton Nihari"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Mutton Nihari</h3><p class="m-card-desc">Slow-braised mutton in deep, spiced bone-marrow gravy. A Lahori classic.</p><div class="m-card-footer"><div class="m-price">R 85</div><button class="m-add" onclick="addItem('Mutton Nihari - R85')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://www.budgetbytes.com/wp-content/uploads/2022/07/Chicken-Alfredo-V3.jpg" alt="Chicken Alfredo"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chicken Alfredo</h3><p class="m-card-desc">Creamy pasta tossed with tender chicken strips and parmesan-style sauce.</p><div class="m-card-footer"><div class="m-price">R 60</div><button class="m-add" onclick="addItem('Chicken Alfredo - R60')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7C3x7uPWNhEfK9qyUBD7cit4LKkkY_iCK2w&s" alt="Moong Daal"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Moong Daal + 2 Roti</h3><p class="m-card-desc">Wholesome yellow lentil curry tempered with cumin, garlic, and coriander.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Moong Daal + 2 Roti - R65')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/650405911_18052231448508640_2952839509676405871_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg1MjU4Mjg0NTU4ODIxNTc3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=-O83uyvByjwQ7kNvwHZJCyF&_nc_oc=AdmVgjDe4noc3LQsqJK3uSEuIPul3POHrSQR6r6vSrkFkd_ZwR0dqBuTkkPH97k-S8s&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=izcWis_jcw44Wlo8ajodDQ&_nc_ss=8&oh=00_Afy3SMoJPyBW8cfb12TnWjIBk0mRcqQJh6D9OcAnbfeECg&oe=69BB42F6" alt="Chicken Korma"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chicken Korma + 2 Rotis</h3><p class="m-card-desc">Mild, fragrant korma cooked in yoghurt and aromatic spices, with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Chicken Korma - R80')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650810401_18052235417508640_651568115920909790_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzg1MjU5MTg2MTM0NTMxMDAzOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=4sz75v4XJAgQ7kNvwGOpLF7&_nc_oc=AdpLsDl0HjnKOagJ4eBuN2FPcYu73LtJe0JqgnQFQszlbY3PwILtD_U40Qn7cWnk2XU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=-C_di2bBmC0xlChGDqP0Zg&_nc_ss=7a30f&oh=00_AfzH38s3hQN0osWZXX-rsv8O7td3m-FiA_awJLb8dDtEdA&oe=69C422E4" alt="Chicken Korma"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chicken Korma + 2 Rotis</h3><p class="m-card-desc">Mild, fragrant korma cooked in yoghurt and aromatic spices, with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Chicken Korma - R80')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/06/chickpea-curry-recipe.jpg" alt="Chickpea Curry"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chickpea Curry + Laccha Paratha</h3><p class="m-card-desc">Bold chana masala paired with crispy, flaky laccha parathas.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Chickpea Curry - R75')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651775994_18052244576508640_5924070971331120951_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1MjYxMzk4NTcyODUwMDcxMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=1VyBm6BBBbwQ7kNvwHvNRKz&_nc_oc=AdlONNgiB7Rbrt6KoO_H6ES623wGG4xk0MSCXbvMbp61ucoHDPl0W5km9eOoIsSM1zc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=qrHrqx5G3_NwVVP5uPvxnw&_nc_ss=8&oh=00_AfxHr0YZAiDjDfvR3qRI89b8dyjLGwiZjm8NuOtZIMm-cQ&oe=69BB4A53" alt="Daal Gosht"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Daal Gosht + 2 Roti</h3><p class="m-card-desc">Hearty lentil and mutton curry, slow-cooked and served with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Daal Gosht - R80')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651775994_18052244576508640_5924070971331120951_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=110&ig_cache_key=Mzg1MjYxMzk4NTcyODUwMDcxMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=LcD8I68Vsv8Q7kNvwGj8wch&_nc_oc=AdpxSIKE2F4NKEWveenI8gt6G4vlgRxi61VqJtKJWDV1jubGu-Orh1pavq--S7BUpAc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_AfwEHI18DsA7b-AFNhZNALL0GdRSD_Q55Cv39aImk3p0Tw&oe=69C41453" alt="Daal Gosht"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Daal Gosht + 2 Roti</h3><p class="m-card-desc">Hearty lentil and mutton curry, slow-cooked and served with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Daal Gosht - R80')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgiAwoX361HIleFRI_z7EVmnkvaVnwa4AIiQ&s" alt="Liver Curry"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Mutton Liver Curry + 2 Roti</h3><p class="m-card-desc">Rich, spiced mutton liver curry served with soft fresh rotis.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Liver Curry + 2 Roti - R65')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/652662076_18052247018508640_3783917906542629921_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1MjYyMDU3OTcxMTI0ODExNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=iuuv65doaYwQ7kNvwHhKCJP&_nc_oc=Adn3N16_g29kZTqJTFUe8qqa7gTfBCAZFVGOvE2vjVRVm0Cfh6vVwnzs91H1rNQufXI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=8Li6nnE_EYkcwnZsH7WDzA&_nc_ss=8&oh=00_AfxfEmhwxQHqVcNn-61az-fQLhB0adOLpYvoFTnkEKLNtw&oe=69BB1D53" alt="Mutton Nihari Roti"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Mutton Nihari + 2 Roti</h3><p class="m-card-desc">Signature mutton nihari paired with 2 warm rotis for the full experience.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Mutton Nihari + 2 Roti - R75')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/651607835_18052230203508640_2539403849885141100_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzg1MjU3ODg2ODQ1NjkxMDA4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=h752pjJVkt0Q7kNvwF8g7ls&_nc_oc=Adr-aoQF991Tw68l1Z_v8Zz3sd-pPGruKuzlxO-f1P0GsYyd5iuaZKW_v6VIl7tXftc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=ab-knEVtNYzovmYYgDWJiQ&_nc_ss=7a30f&oh=00_Afy211W0bUAc34jIDlyHjHGntQVwcSY1Q8_wlgRGG_cdqA&oe=69C436B5" alt="Mutton Nihari Roti"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Mutton Nihari + 2 Roti</h3><p class="m-card-desc">Signature mutton nihari paired with 2 warm rotis for the full experience.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Mutton Nihari + 2 Roti - R75')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://recipe52.com/wp-content/uploads/2019/08/Chicken-Nihari-Recipe-instagram.jpg" alt="Chicken Nihari"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chicken Nihari + 2 Roti</h3><p class="m-card-desc">Classic nihari made with chicken — just as rich and full of flavour.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Chicken Nihari + 2 Roti - R70')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhnQVDeMslaipTwl6O0fKKB_CxSOa8Dm0CtQ&s" alt="Beans Egg Curry"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Beans &amp; Boiled Egg Curry + Garlic Rolls + 2 Roti</h3><p class="m-card-desc">Thick bean and egg curry, served with garlic rolls and rotis.</p><div class="m-card-footer"><div class="m-price">R 55</div><button class="m-add" onclick="addItem('Beans & Egg Curry - R55')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://i.ytimg.com/vi/_QleU81UB0o/hq720.jpg" alt="Lamb Tibe"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Lamb Tibe (Aujri) Curry + 2 Roti</h3><p class="m-card-desc">Traditional lamb offal curry with bold spices, paired with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Lamb Tibe Curry + 2 Roti - R75')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://stewwithsaba.com/wp-content/uploads/2023/07/IMG_5580.jpg" alt="Daal Mash"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Daal Mash + 2 Roti</h3><p class="m-card-desc">Silky white urad daal, restaurant-style, served with a large dpotti roti.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Daal Mash + 2 Roti - R65')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoGn9ySUeNxd77Mn-h95GqNcL_QxQIaWohWQ&s" alt="Gobi Gosht"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Gobi Gosht + 2 Roti</h3><p class="m-card-desc">Tender mutton and cauliflower cooked in a rich, fragrant masala, with 2 rotis.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Gobi Gosht + 2 Roti - R80')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://img.freepik.com/premium-photo/potato-curry…-as-chapati-roti-selective-focus_466689-11929.jpg" alt="4 Kabab Potato Curry"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">4 Kabab Potato Curry + 2 Roti</h3><p class="m-card-desc">Four juicy kababs in a hearty potato curry, served with 2 fresh rotis.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('4 Kabab Potato Curry - R65')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/650405911_18052231448508640_2952839509676405871_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg1MjU4Mjg0NTU4ODIxNTc3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=-O83uyvByjwQ7kNvwHZJCyF&_nc_oc=AdmVgjDe4noc3LQsqJK3uSEuIPul3POHrSQR6r6vSrkFkd_ZwR0dqBuTkkPH97k-S8s&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=izcWis_jcw44Wlo8ajodDQ&_nc_ss=8&oh=00_Afy3SMoJPyBW8cfb12TnWjIBk0mRcqQJh6D9OcAnbfeECg&oe=69BB42F6" alt="Chicken Qorma"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chicken Qorma + 2 Roti</h3><p class="m-card-desc">Classic Pakistani-style chicken qorma — aromatic, slow-cooked, and deeply flavourful.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Chicken Qorma - R75')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/651607835_18052230203508640_2539403849885141100_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzg1MjU3ODg2ODQ1NjkxMDA4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=VlocQy0ZzuMQ7kNvwFr42Jw&_nc_oc=AdkbheBDIOclIFdVm3XT5KTbxLxLY24RWyvjB9u8DlPf9mFHSdJFdvbmQnZG1_8Ipmk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=izcWis_jcw44Wlo8ajodDQ&_nc_ss=8&oh=00_AfyBwxjEivs-vnmVeMTyTFcC10avmykrLLn8BOm1KhnoCw&oe=69BB3475" alt="Alo Gosht"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Alo Gosht + 2 Roti</h3><p class="m-card-desc">Classic Pakistani potato and mutton curry — hearty, spiced, and deeply comforting.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Alo Gosht - R80')">+ Add</button></div></div></div>
-
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://img.freepik.com/premium-photo/potato-curry-as-chapati-roti-selective-focus_466689-11929.jpg" alt="4 Kabab Potato Curry"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">4 Kabab Potato Curry + 2 Roti</h3><p class="m-card-desc">Four juicy kababs in a hearty potato curry, served with 2 fresh rotis.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('4 Kabab Potato Curry - R65')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650810401_18052235417508640_651568115920909790_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzg1MjU5MTg2MTM0NTMxMDAzOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=4sz75v4XJAgQ7kNvwGOpLF7&_nc_oc=AdpLsDl0HjnKOagJ4eBuN2FPcYu73LtJe0JqgnQFQszlbY3PwILtD_U40Qn7cWnk2XU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=-C_di2bBmC0xlChGDqP0Zg&_nc_ss=7a30f&oh=00_AfzH38s3hQN0osWZXX-rsv8O7td3m-FiA_awJLb8dDtEdA&oe=69C422E4" alt="Chicken Qorma"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Chicken Qorma + 2 Roti</h3><p class="m-card-desc">Classic Pakistani-style chicken qorma — aromatic, slow-cooked, and deeply flavourful.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Chicken Qorma - R75')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="mains"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/652662076_18052247018508640_3783917906542629921_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=110&ig_cache_key=Mzg1MjYyMDU3OTcxMTI0ODExNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=WUE7zpg-wpwQ7kNvwE26laE&_nc_oc=AdrqkoS-zRG6Nu4rIxp5-R7AtzDuADARRAEzGHGim8TmipUogC7Yf5v-xzy4NApZS_U&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_AfzxVRjAxoYMIsZHimYxs2TG-3MNLxc2u1j9pELMHoSpWQ&oe=69C41F93" alt="Alo Gosht"/><div class="m-card-body"><p class="m-card-cat">Mains &amp; Curries</p><h3 class="m-card-name">Alo Gosht + 2 Roti</h3><p class="m-card-desc">Classic Pakistani potato and mutton curry — hearty, spiced, and deeply comforting.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Alo Gosht - R80')">+ Add</button></div></div></div>
   <!-- BUNNY CHOW -->
   <div class="m-card show" data-cat="bunny"><img class="m-card-img" src="https://www.thefooddictator.com/wp-content/uploads/2021/12/bunnychow.jpg" alt="Chicken Bunny"/><div class="m-card-body"><p class="m-card-cat">Bunny Chow</p><h3 class="m-card-name">Chicken Bunny Chow</h3><p class="m-card-desc">Rich chicken curry piled high in a toasted bread bowl.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Chicken Bunny - R70')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="bunny"><img class="m-card-img" src="https://www.thefooddictator.com/wp-content/uploads/2021/12/bunnychow.jpg" alt="Mutton Bunny"/><div class="m-card-body"><p class="m-card-cat">Bunny Chow</p><h3 class="m-card-name">Mutton Bunny Chow</h3><p class="m-card-desc">Rich mutton curry piled high in a toasted bread bowl.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Mutton Bunny - R80')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="bunny"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS84k0AZv53oavQCqzCCTe5hB-0GGHjrQ-sIg&s" alt="Chicken Akhni"/><div class="m-card-body"><p class="m-card-cat">Bunny Chow</p><h3 class="m-card-name">Chicken Akhni Meal + Zeila + Salad</h3><p class="m-card-desc">Chicken akhni bunny with traditional zeila sauce and fresh garden salad.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Chicken Akhni Meal - R80')">+ Add</button></div></div></div>
-
   <!-- BURGERS & WRAPS -->
-  <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/650899895_18052230173508640_930486362246922169_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzg1MjU3ODc1NzQwODQ5MDE3NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=EwXUYT6dkKIQ7kNvwFT2mtf&_nc_oc=AdnhBU-dLZ-BnxvcbHRTFZrcy3VFJlShdAlNgJh_6-IUxP3-o2uQfzWkq0f0iBTXFB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=WfZ-zev8fbz_aAOr1EVtEw&_nc_ss=8&oh=00_AfxKhbCLdz767q1zQzNZVmvUi0y9pagvwbggWs3WDYeCNw&oe=69BB20D9" alt="Tikka Wrap"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Chicken Tikka Roti Wrap</h3><p class="m-card-desc">Marinated tikka chicken, crisp salad, and garlic sauce wrapped in soft roti.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('Chicken Tikka Wrap - R50')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651448868_18052246352508640_8127548331863998034_n.heic?stp=dst-jpg_e35_p640x640_sh0.08_tt6&_nc_cat=106&ig_cache_key=Mzg1MjYxODExOTkxMTM2Njk5OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNTJ4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=SBlVXWLvCaQQ7kNvwHc10Kj&_nc_oc=AdlXzQNzU8Ij1OzyCH6CK_S7yn_42KZj-nCCPLZ8DNJMIVdL4vjFC82kUz-wPUDyZ4w&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=8Li6nnE_EYkcwnZsH7WDzA&_nc_ss=8&oh=00_AfzsdXu4HXdGiFS-yLW0Q8uBtMffoeIMCD8_BwerUtUKIQ&oe=69BB2EA3" alt="Spicy Mayo Burger"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Spicy Mayo Chicken Burger</h3><p class="m-card-desc">Crispy chicken drizzled with our house spicy mayo — a crowd favourite.</p><div class="m-card-footer"><div class="m-price">R 45</div><button class="m-add" onclick="addItem('Spicy Mayo Burger - R45')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/650899895_18052230173508640_930486362246922169_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzg1MjU3ODc1NzQwODQ5MDE3NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Gr4IbWH6aPIQ7kNvwGahnbE&_nc_oc=AdrUVngfgTcdOFjz-O907rbyNaBEoDCXqiXuAp9DKiopGqckGhyEf__pB34Q6XnygVs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=ab-knEVtNYzovmYYgDWJiQ&_nc_ss=7a30f&oh=00_AfxN2-UdHmEutSNDJhM4P_zcup_rj29iYR5b-wyD8JfQeg&oe=69C42319" alt="Tikka Wrap"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Chicken Tikka Roti Wrap</h3><p class="m-card-desc">Marinated tikka chicken, crisp salad, and garlic sauce wrapped in soft roti.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('Chicken Tikka Wrap - R50')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651448868_18052246352508640_8127548331863998034_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=106&ig_cache_key=Mzg1MjYxODExOTkxMTM2Njk5OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNTJ4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=UObG_xVDpFQQ7kNvwEUmhA_&_nc_oc=AdqlQtY9uynulLSRenW5hr2jcIsE8EIss3sKbSC46mTGDO-r8ELbHOHnDSs-xNLTuaI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_AfwhcT7ZIIMAbhafIxpppHCs7LQiV1yDCK7w99x94BHrlQ&oe=69C430E3" alt="Spicy Mayo Burger"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Spicy Mayo Chicken Burger</h3><p class="m-card-desc">Crispy chicken drizzled with our house spicy mayo — a crowd favourite.</p><div class="m-card-footer"><div class="m-price">R 45</div><button class="m-add" onclick="addItem('Spicy Mayo Burger - R45')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://www.foodiaq.com/wp-content/uploads/2025/01/Butter-chicken.jpg" alt="Butter Chicken"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Butter Chicken + 2 Roti</h3><p class="m-card-desc">Velvety butter chicken curry wrapped in 2 fresh rotis — pure comfort.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Butter Chicken + 2 Roti - R70')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://foxeslovelemons.com/wp-content/uploads/2023/06/Chicken-Shawarma-8.jpg" alt="Shawarma"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Laadth Chicken Shawarma</h3><p class="m-card-desc">Loaded Lebanese-style shawarma with garlic sauce, pickles, and fresh salad.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('Chicken Shawarma - R50')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://img.freepik.com/premium-photo/indian-spicy-chicken-tikka-biryani-with-raita-gulab-jamun-served-dish-top-view-grey-background_689047-1265.jpg" alt="Tika Biryani"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Chicken Tika Biryani + Rayta + Cucumber</h3><p class="m-card-desc">Fragrant chicken tikka biryani served with cooling homemade rayta.</p><div class="m-card-footer"><div class="m-price">R 80</div><button class="m-add" onclick="addItem('Tika Biryani + Rayta + Cucumber - R80')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/652843847_18052253111508640_6379264732559473574_n.heic?stp=dst-jpg_e35_s1080x1080_tt6&_nc_cat=106&ig_cache_key=Mzg1MjYzODY3MjI3Nzc1NjczNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTAxMS5zZHIuQzMifQ%3D%3D&_nc_ohc=OPW6hnNPd9UQ7kNvwFee5BI&_nc_oc=AdkfJwKpEWpgbzaqBQ49IuEzKGxe9Jssm5vl6cXzyaV0jHPmwMvf_fpVMIfD0weHPaE&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=DeWVFEqj8XOrXEBIq3SCSA&_nc_ss=8&oh=00_Afz5rXfoCSTT4qlIZTvC_26ScbikvUkA3TVm0ElauJq-EQ&oe=69BB41A7" alt="Mini Shawarma Kids"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Mini Shawarma 4 Pieces (Kids)</h3><p class="m-card-desc">Four bite-sized shawarma rolls — perfect for little ones or a light snack.</p><div class="m-card-footer"><div class="m-price">R 60</div><button class="m-add" onclick="addItem('Mini Shawarma Kids 4pcs - R60')">+ Add</button></div></div></div>
-
+  <div class="m-card show" data-cat="burgers"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/652843847_18052253111508640_6379264732559473574_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=106&ig_cache_key=Mzg1MjYzODY3MjI3Nzc1NjczNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTAxMS5zZHIuQzMifQ%3D%3D&_nc_ohc=zRyoP3b9ZygQ7kNvwHXD7PD&_nc_oc=AdpxbAY0SOdQWFfKtaTh9kRxEcqIe8j4fJXj34uV4trcfLSQ0afugO8bIVaSbPm8-8M&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_AfybX9P_FLtjJul-FWBm6_QtfIFtMwMa9KXsGuHOi7Ws8A&oe=69C40BA7" alt="Mini Shawarma Kids"/><div class="m-card-body"><p class="m-card-cat">Burgers &amp; Wraps</p><h3 class="m-card-name">Mini Shawarma 4 Pieces (Kids)</h3><p class="m-card-desc">Four bite-sized shawarma rolls — perfect for little ones or a light snack.</p><div class="m-card-footer"><div class="m-price">R 60</div><button class="m-add" onclick="addItem('Mini Shawarma Kids 4pcs - R60')">+ Add</button></div></div></div>
   <!-- RICE -->
   <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://www.indianhealthyrecipes.com/wp-content/uploads/2019/04/veg-biryani-recipe-500x500.jpg" alt="Veg Biryani"/><div class="m-card-body"><p class="m-card-cat">Rice &amp; Biryani</p><h3 class="m-card-name">Vegetable Biryani + Raita + Cucumber</h3><p class="m-card-desc">Fragrant basmati rice layered with spiced fresh vegetables and saffron.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Veg Biryani - R65')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/652803447_18052229870508640_750321203927867234_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1MjU3Nzc4NDg5MjAyMTAwNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=bvtl_Ic2Z1MQ7kNvwGWb-r9&_nc_oc=AdlW0zLym0v8ntLTaZT8g5KabNvJewE9ubestqIJGqmQDc-DEBRfF-JvFyo4e8Oi0m0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=PPvN9pgxBsS4oapG5-tayA&_nc_ss=8&oh=00_AfwgsuChJocCk2HeMncDWNEjA89n0TDwYgsESqlsvh6RSQ&oe=69BB22EF" alt="Chicken Biryani"/><div class="m-card-body"><p class="m-card-cat">Rice &amp; Biryani</p><h3 class="m-card-name">Chicken Biryani + Raita + Cucumber</h3><p class="m-card-desc">Dum-cooked chicken biryani with whole spices, fried onions, and fresh mint.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Chicken Biryani + Raita + Cucumber - R75')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/652803447_18052229870508640_750321203927867234_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1MjU3Nzc4NDg5MjAyMTAwNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=oomh_oL-cO8Q7kNvwEcDCTd&_nc_oc=AdofTZaebxtUmsN9ENLoQTKbPJUgeQflpM5tvatNeGYVpNZNxkgT0a2QBHAqLwKpBQI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=oLu6rGN4rdgxUtPl_yPN6w&_nc_ss=7a30f&oh=00_AfyENKvG0Ifz9URuP9TsobcFaC3EH31mCpTINEI7FP7O8g&oe=69C4252F" alt="Chicken Biryani"/><div class="m-card-body"><p class="m-card-cat">Rice &amp; Biryani</p><h3 class="m-card-name">Chicken Biryani + Raita + Cucumber</h3><p class="m-card-desc">Dum-cooked chicken biryani with whole spices, fried onions, and fresh mint.</p><div class="m-card-footer"><div class="m-price">R 75</div><button class="m-add" onclick="addItem('Chicken Biryani + Raita + Cucumber - R75')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://www.licious.in/blog/wp-content/uploads/2020/12/Chicken-Fried-Rice-min.jpg" alt="Chicken Fried Rice"/><div class="m-card-body"><p class="m-card-cat">Rice &amp; Biryani</p><h3 class="m-card-name">Chicken Fried Rice + Raita + Cucumber</h3><p class="m-card-desc">Wok-tossed fried rice with chicken, vegetables, and savoury seasoning.</p><div class="m-card-footer"><div class="m-price">R 60</div><button class="m-add" onclick="addItem('Chicken Fried Rice + Raita + Cucumber - R60')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://i.pinimg.com/736x/c2/5b/44/c25b441dc12a67a65680b241b9a6806a.jpg" alt="Kadhi Pakora"/><div class="m-card-body"><p class="m-card-cat">Rice &amp; Biryani</p><h3 class="m-card-name">Kadhi Pakora with Rice/Roti</h3><p class="m-card-desc">Tangy yoghurt-based kadhi with crispy fried pakoras over steamed basmati/Roti.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Kadhi Pakora + Rice/Roti - R65')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650757912_18052231682508640_2317735495025936910_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1MjU4MzQ1NDc2MDUxMDQzNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=BgoAnmmZOD4Q7kNvwHhUcCs&_nc_oc=Adm_OTRQty3iYg_BHx4XKZLpQl-oG0PpZueJXYzIRkuEYXptiQKEodbZQIl4ew8UDdc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=zcZ2-rtOgRpUiPoIRZldpg&_nc_ss=8&oh=00_AfzTSXXlhgLMPToaCS9hxPVs_V0CRMJWGagzyiQkKV-Xag&oe=69BB08D9" alt="Chicken Manchurian"/><div class="m-card-body"><p class="m-card-cat">Rice &amp; Biryani</p><h3 class="m-card-name">Chicken Manchurian with Rice</h3><p class="m-card-desc">Crispy chicken tossed in a tangy Indo-Chinese Manchurian sauce, served with rice.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Chicken Manchurian + Rice - R65')">+ Add</button></div></div></div>
-
+  <div class="m-card show" data-cat="rice"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650757912_18052231682508640_2317735495025936910_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1MjU4MzQ1NDc2MDUxMDQzNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Ff7JjKYzeL8Q7kNvwHmpMXl&_nc_oc=Ado4wqIEl7OF0YPYS4bsF-ZgWhNGry1Mmz9DXdniy9uzAHw2CkYZD2exMxr8ICvF32Q&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=ab-knEVtNYzovmYYgDWJiQ&_nc_ss=7a30f&oh=00_AfxJmud4jNoD0X5WN19jAK5ENtsEoxTbo1Cj530ma5xEjg&oe=69C40B19" alt="Chicken Manchurian"/><div class="m-card-body"><p class="m-card-cat">Rice &amp; Biryani</p><h3 class="m-card-name">Chicken Manchurian with Rice</h3><p class="m-card-desc">Crispy chicken tossed in a tangy Indo-Chinese Manchurian sauce, served with rice.</p><div class="m-card-footer"><div class="m-price">R 65</div><button class="m-add" onclick="addItem('Chicken Manchurian + Rice - R65')">+ Add</button></div></div></div>
   <!-- FISH -->
-  <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650079383_18052308017508640_2824545468379583262_n.heic?stp=dst-jpg_e35_s640x640_sh0.08_tt6&_nc_cat=109&ig_cache_key=Mzg1Mjc0MDIzMjgwMjQ4NDgzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4ODMwLnNkci5DMyJ9&_nc_ohc=t8sObT-mJFkQ7kNvwF5eAvx&_nc_oc=Admjdx5Pr-o9CWitjFmwRJIu73SDxeG7cOLq-NXWDQpmJpGtCR1jClztyfm3CkLpLrM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=0x1pDX6vhE1SeQZAjF3h8A&_nc_ss=8&oh=00_Afx-dpFk2Tr7PipTf-aHVnwWblQyinjF3AZ9UQgFzgulKQ&oe=69BB4272" alt="Grilled Red Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Grilled Red Fish 2 pcs + Garlic Rolls</h3><p class="m-card-desc">Chargrilled marinated fish with garlic rolls.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Grilled Red Fish - R100')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650079383_18052308017508640_2824545468379583262_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=109&ig_cache_key=Mzg1Mjc0MDIzMjgwMjQ4NDgzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4ODMwLnNkci5DMyJ9&_nc_ohc=KqbqAfDIzi4Q7kNvwFD6HKB&_nc_oc=Ado_BnLL8UodwaUnD8QUlWWAtjcsCu9la3UICtugdKkKTZtAd9aZAB8d1v4TY832CBk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=gsnWaC6p3CscIzJXR7WhXg&_nc_ss=7a32e&oh=00_AfxXZOlVz1oyuBK_Tc_-z_Fp5tRPXScfNu8RdvHol980AQ&oe=69C40C72" alt="Grilled Red Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Grilled Red Fish 2 pcs + Garlic Rolls</h3><p class="m-card-desc">Chargrilled marinated fish with garlic rolls.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Grilled Red Fish - R100')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Ls5A8SigMacNW3i1etwXlF4op0wyjmsg-w&s" alt="Fish Curry"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Fish Curry + 2 Roti</h3><p class="m-card-desc">Richly spiced fish curry with fresh herbs, served with 2 soft rotis.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Fish Curry + 2 Roti - R100')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://grandbaby-cakes.com/wp-content/uploads/2023/04/fish-and-chips-recipe.jpg" alt="Fry Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Fry Fish &amp; Chips (200g)</h3><p class="m-card-desc">Golden battered fried fish with crispy chips — classic and satisfying.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Fry Fish & Chips - R100')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650079383_18052308017508640_2824545468379583262_n.heic?stp=dst-jpg_e35_s640x640_sh0.08_tt6&_nc_cat=109&ig_cache_key=Mzg1Mjc0MDIzMjgwMjQ4NDgzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4ODMwLnNkci5DMyJ9&_nc_ohc=t8sObT-mJFkQ7kNvwF5eAvx&_nc_oc=Admjdx5Pr-o9CWitjFmwRJIu73SDxeG7cOLq-NXWDQpmJpGtCR1jClztyfm3CkLpLrM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=0x1pDX6vhE1SeQZAjF3h8A&_nc_ss=8&oh=00_Afx-dpFk2Tr7PipTf-aHVnwWblQyinjF3AZ9UQgFzgulKQ&oe=69BB4272" alt="Grilled Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Grilled Fish &amp; Chips or Salad (200g)</h3><p class="m-card-desc">Grilled fish with your choice of crispy chips or fresh garden salad.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Grilled Fish & Chips/Salad - R100')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="fish salads"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/649975173_18052247414508640_2386833491138654611_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1MjYyMjM1NTA3NjI0ODQwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTc0Mi5zZHIuQzMifQ%3D%3D&_nc_ohc=JT3eEABWPEkQ7kNvwHvLm3h&_nc_oc=AdmxjpDLcYoyCK-jLWNPiu3_ZbAIBBVvEsqrEJaa1yyubeSv8ODLqDoKZ3A-NKaRf0E&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=H2GBycungqOT-LhN92sTHQ&_nc_ss=8&oh=00_AfwX0vUcubMZecSTdOoHeIS2sOBzfF2vpv1yRl522TYT_g&oe=69BB5870" alt="Fish Salad Full Portion"/><div class="m-card-body"><p class="m-card-cat">Fish · Salads</p><h3 class="m-card-name">Fish Salad (Full Portion)</h3><p class="m-card-desc">A generous full portion of fresh fish served over a crisp, vibrant salad.</p><div class="m-card-footer"><div class="m-price">R 150</div><button class="m-add" onclick="addItem('Fish Salad Full Portion - R150')">+ Add</button></div></div></div>
-
+  <div class="m-card show" data-cat="fish"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650079383_18052308017508640_2824545468379583262_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=109&ig_cache_key=Mzg1Mjc0MDIzMjgwMjQ4NDgzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4ODMwLnNkci5DMyJ9&_nc_ohc=KqbqAfDIzi4Q7kNvwFD6HKB&_nc_oc=Ado_BnLL8UodwaUnD8QUlWWAtjcsCu9la3UICtugdKkKTZtAd9aZAB8d1v4TY832CBk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=gsnWaC6p3CscIzJXR7WhXg&_nc_ss=7a32e&oh=00_AfxXZOlVz1oyuBK_Tc_-z_Fp5tRPXScfNu8RdvHol980AQ&oe=69C40C72" alt="Grilled Fish"/><div class="m-card-body"><p class="m-card-cat">Fish</p><h3 class="m-card-name">Grilled Fish &amp; Chips or Salad (200g)</h3><p class="m-card-desc">Grilled fish with your choice of crispy chips or fresh garden salad.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Grilled Fish & Chips/Salad - R100')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="fish salads"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/649975173_18052247414508640_2386833491138654611_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=110&ig_cache_key=Mzg1MjYyMjM1NTA3NjI0ODQwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTc0Mi5zZHIuQzMifQ%3D%3D&_nc_ohc=bVOoV1PBG0YQ7kNvwEAfvnt&_nc_oc=AdpriqlHviRmh0GT5TMpFHDxH9KmBhPGj5_nqO5t8Dx4QX2xDluS7QDAqq2Lir667Jo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_AfyhUYepERQxReCj9jpBVErOSUMIy32F9I0TNx1qq_1rhw&oe=69C42270" alt="Fish Salad Full Portion"/><div class="m-card-body"><p class="m-card-cat">Fish · Salads</p><h3 class="m-card-name">Fish Salad (Full Portion)</h3><p class="m-card-desc">A generous full portion of fresh fish served over a crisp, vibrant salad.</p><div class="m-card-footer"><div class="m-price">R 150</div><button class="m-add" onclick="addItem('Fish Salad Full Portion - R150')">+ Add</button></div></div></div>
   <!-- SNACKS & SIDES -->
   <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://www.indianhealthyrecipes.com/wp-content/uploads/2020/08/aloo-paratha-recipe.jpg" alt="Potato Paratha"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">Potato Paratha</h3><p class="m-card-desc">Crispy flaky flatbread stuffed with spiced masala potato — a breakfast staple.</p><div class="m-card-footer"><div class="m-price">R 45</div><button class="m-add" onclick="addItem('Potato Paratha - R45')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Samosas"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">Frozen Samosa Menu</h3><p class="m-card-desc">Choose from Lamb, Chicken Mince, Sweet Corn Cheese, or Potato — ready to fry.</p><div class="m-card-footer"><div class="m-price">R 45</div><button class="m-add" onclick="addItem('Frozen Samosas - R45')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="snacks salads"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651624925_18052254827508640_6337871945508746341_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzg1MjY0MjIzNTM5Nzc1MzA0NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=3FPsJi2wxCMQ7kNvwEHi5je&_nc_oc=AdnAIdWyd7WjeuN_B2iGNaEzBKIla45u2G8woBSqclXy4wWOt5qo71mMgquzY1JJSNc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=H2GBycungqOT-LhN92sTHQ&_nc_ss=8&oh=00_Afx6Pua38Himj4PI7wy00mBCypdch8y4wVujTq75bwRsAg&oe=69BB5E6B" alt="Fresh Salad"/><div class="m-card-body"><p class="m-card-cat">Salads</p><h3 class="m-card-name">Fresh Salad</h3><p class="m-card-desc">Crisp garden salad with fresh tomatoes, cucumber, and onion dressing.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('Fresh Salad - R50')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650600221_18052246403508640_2273876327625117355_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzg1MjYxODMxMDMyNDM4NjE3OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=XWa0goG0yKsQ7kNvwEKVbJL&_nc_oc=Admxb9txmrbIu07czuxPRUFWR0w9xhJRLFhWxWDf0NC1g8vxCw3GnOgEQ8mXa73bC-w&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=1WBP_9qRE-GYYdWLV89rDA&_nc_ss=8&oh=00_Afz2NPrnxGxM80k-bjVanMI_TXXRSrABpdYfjgM29pQKyg&oe=69BB5EDC" alt="6 Piece Bread Pockets"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">6 Piece Bread Pockets</h3><p class="m-card-desc">Six soft bread pockets — great for dipping or stuffing with your favourite filling.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('6 Piece Bread Pockets - R50')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="snacks salads"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/652765044_18052255154508640_5225610535911530137_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1MjY0MjkxNzYyNjQ3ODQyMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExMzV4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=vOvTqlz5X3wQ7kNvwFq-AMv&_nc_oc=Adk8d_sGahhzWmB9lH4EmoX8rVdbedmoL8W78Tnp5oWrn2Tnf8IJIPleP9KCn3RJysA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=H2GBycungqOT-LhN92sTHQ&_nc_ss=8&oh=00_AfxbrQQlx3opD6oq8w3jJkmfZx6WTC6gOMfwKS_tE18z-A&oe=69BB38E2" alt="Fresh Green Mix Salad Medium"/><div class="m-card-body"><p class="m-card-cat">Salads</p><h3 class="m-card-name">Fresh Green Mix Salad Medium</h3><p class="m-card-desc">A refreshing medley of mixed greens, herbs, and seasonal vegetables.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Fresh Green Mix Salad Medium - R70')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651327618_18052230263508640_2300896298672316722_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1MjU3OTA0NTI3MTkyODg5Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Ux4RpmY1XA4Q7kNvwGfthyV&_nc_oc=Adkp3Mc7-T7vheAnEn3aFKViD29ZW8voovelmGrESsNUd2d8winNdwXuPqQKPsjiaso&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=SqxTAZTPx_tfPq32nI1ZSA&_nc_ss=8&oh=00_Afyn_Mh_HzieS1_iB98vt2UsvXzKuqsqDK8ZK0tQ5rAo8A&oe=69BB381C" alt="3 Chicken Sticks"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">3 Chicken Sticks + 2 Rolls</h3><p class="m-card-desc">Three tender chicken sticks served with 2 soft rolls — a perfect snack or starter.</p><div class="m-card-footer"><div class="m-price">R 90</div><button class="m-add" onclick="addItem('3 Chicken Sticks + 2 Rolls - R90')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650398644_18052255346508640_1929613086295102951_n.heic?stp=dst-jpg_e35_p1080x1080_tt6&_nc_cat=110&ig_cache_key=Mzg1MjY0MzQ1NzU3NTk2OTgyMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzOTN4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=AJYR1f5XbuYQ7kNvwGPalnl&_nc_oc=AdlzWzfc1wzZu-W6paXSjE-UX6NM7DVlu2iUG_1KFmCkYwFZi8VjOMJO-ZlUjeehW8A&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=DeWVFEqj8XOrXEBIq3SCSA&_nc_ss=8&oh=00_AfxnmNhJIMnEWml2T8gCMVb_c_mzVI_gUlyt0MdVuFkbuA&oe=69BB3902" alt="Chicken Nuggets"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">6 Pieces Chicken Nuggets</h3><p class="m-card-desc">Six golden crispy chicken nuggets — a family favourite and perfect snack.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('6 Pcs Chicken Nuggets - R50')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="snacks salads"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/651013864_18052253429508640_6198109541040920030_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzg1MjYzOTIwMzk2NDUwMDg2OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyODJ4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=yxvAqMTZdQEQ7kNvwGcC3fU&_nc_oc=AdnsSOKNwoGe1EW2mNWkQlkp6gYCn52ZKRK34dhyBKcuqd17ghqkK7QuhvWqJkof_vs&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=3i67_vZWhuIcHPdgzIOo7w&_nc_ss=8&oh=00_AfzlVZy7OC-iYrtl2x-8VLUp14K1lgC1ix3DqvRSc2Dd3g&oe=69BB1F72" alt="Spicy Grilled Chicken Avocado Salad"/><div class="m-card-body"><p class="m-card-cat">Salads</p><h3 class="m-card-name">Spicy Grilled Chicken Avocado Salad</h3><p class="m-card-desc">Tender spicy grilled chicken over fresh greens with creamy avocado slices.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Spicy Grilled Chicken Avocado Salad - R70')">+ Add</button></div></div></div>
-
+  <div class="m-card show" data-cat="snacks salads"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651472892_18052255031508640_650890080476812048_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=109&ig_cache_key=Mzg1MjY0MjY2MzYxOTQyNjYxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=T3rzV_3gilsQ7kNvwFFKTJE&_nc_oc=Adr0WK8bHuzJEFaG-HuM--4GwjHGNPnf4QbXNwCNxdot2KtqWiAfMrzpol20VTbGFB4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=gsnWaC6p3CscIzJXR7WhXg&_nc_ss=7a30f&oh=00_Afy7Lc-tF6eYkVHDHDLC0Y7MQ5SoVAfMh4uwYcQOK8cIvw&oe=69C4234F" alt="Fresh Salad"/><div class="m-card-body"><p class="m-card-cat">Salads</p><h3 class="m-card-name">Fresh Salad</h3><p class="m-card-desc">Crisp garden salad with fresh tomatoes, cucumber, and onion dressing.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('Fresh Salad - R50')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650600221_18052246403508640_2273876327625117355_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=111&ig_cache_key=Mzg1MjYxODMxMDMyNDM4NjE3OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=gO5Wwju_AXQQ7kNvwFN__eH&_nc_oc=AdqGsGudifW3o0-BU8VpZE20sT2UuWweE45TgSzO6FO1ftEEjHFZpeJlwMtuB2juIQ8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_AfxJ5_obX3Kin55XfAtCTT6OpOJuH7JycvA2fyje5FRO4Q&oe=69C428DC" alt="6 Piece Bread Pockets"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">6 Piece Bread Pockets</h3><p class="m-card-desc">Six soft bread pockets — great for dipping or stuffing with your favourite filling.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('6 Piece Bread Pockets - R50')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="snacks salads"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651624925_18052254827508640_6337871945508746341_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=108&ig_cache_key=Mzg1MjY0MjIzNTM5Nzc1MzA0NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=xx5lBfQ7TogQ7kNvwFdaoB0&_nc_oc=Adoi9QhsGQm0x6L5OSn_u5W9jwP0Vj1SQgg05BeMuBbgm1vbMi2hm4gn8pSPSJcdRT0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=gsnWaC6p3CscIzJXR7WhXg&_nc_ss=7a30f&oh=00_Afx4KkFZbKI2V24rmSaqaphLn5YRWT_jWw89sj1bpfeLkA&oe=69C4286B" alt="Fresh Green Mix Salad Medium"/><div class="m-card-body"><p class="m-card-cat">Salads</p><h3 class="m-card-name">Fresh Green Mix Salad Medium</h3><p class="m-card-desc">A refreshing medley of mixed greens, herbs, and seasonal vegetables.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Fresh Green Mix Salad Medium - R70')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651327618_18052230263508640_2300896298672316722_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg1MjU3OTA0NTI3MTkyODg5Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=2PrMHM7RukYQ7kNvwGLjPQn&_nc_oc=AdrMZ6ebnVyQqxilrWFNDXWu30auRV11mAvBvrOCoJmiQa4_yrMg8MnzYZtD73UtY5Y&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=ab-knEVtNYzovmYYgDWJiQ&_nc_ss=7a30f&oh=00_AfzRir-7RPGXJEm52oSdx9jvjuID-Eq10VeJs6gG262hWw&oe=69C43A5C" alt="3 Chicken Sticks"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">3 Chicken Sticks + 2 Rolls</h3><p class="m-card-desc">Three tender chicken sticks served with 2 soft rolls — a perfect snack or starter.</p><div class="m-card-footer"><div class="m-price">R 90</div><button class="m-add" onclick="addItem('3 Chicken Sticks + 2 Rolls - R90')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="snacks"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/650398644_18052255346508640_1929613086295102951_n.heic?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=110&ig_cache_key=Mzg1MjY0MzQ1NzU3NTk2OTgyMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzOTN4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=MzefqpapHNkQ7kNvwHEAQK-&_nc_oc=AdogqymMncg3QC_CJx-r83RzVPhOjlQ9x8O54NdCBpz3hX50b1S-kH1d7FcSTnccM-g&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=gsnWaC6p3CscIzJXR7WhXg&_nc_ss=7a32e&oh=00_AfyLHlwIEM0o2g4Gls3NBU59vLcnhh2D7-MXL_Mi5u2rxg&oe=69C40302" alt="Chicken Nuggets"/><div class="m-card-body"><p class="m-card-cat">Snacks &amp; Sides</p><h3 class="m-card-name">6 Pieces Chicken Nuggets</h3><p class="m-card-desc">Six golden crispy chicken nuggets — a family favourite and perfect snack.</p><div class="m-card-footer"><div class="m-price">R 50</div><button class="m-add" onclick="addItem('6 Pcs Chicken Nuggets - R50')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="snacks salads"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/651013864_18052253429508640_6198109541040920030_n.heic?stp=dst-jpg_e35_p240x240_sh2.08_tt6&_nc_cat=100&ig_cache_key=Mzg1MjYzOTIwMzk2NDUwMDg2OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyODJ4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=BCOFDQlHnegQ7kNvwH0ryC5&_nc_oc=AdrI84QLk7YiXQZCEl3ZoJrlWS0pwKCNOb8UTtU7GZDnGL-Ho1Sd201H9yQ6Fob9mRk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_Afya1z30cSwfNqtDHugOUSC_2eRu_T1fNHqiLQSZfYuVYA&oe=69C421B2" alt="Spicy Grilled Chicken Avocado Salad"/><div class="m-card-body"><p class="m-card-cat">Salads</p><h3 class="m-card-name">Spicy Grilled Chicken Avocado Salad</h3><p class="m-card-desc">Tender spicy grilled chicken over fresh greens with creamy avocado slices.</p><div class="m-card-footer"><div class="m-price">R 70</div><button class="m-add" onclick="addItem('Spicy Grilled Chicken Avocado Salad - R70')">+ Add</button></div></div></div>
   <!-- GRILL -->
-  <div class="m-card show" data-cat="grill"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651343234_18052246946508640_5517448756944038007_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=Mzg1MjYyMDQwNTIxMTQ0NjA1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Ymq4VigVdXcQ7kNvwGzy_bV&_nc_oc=AdnHPoyyPlQ8mcJuQj8xAyzb9Sgge609UEV49AD1jZK5RZNssEfkiRpXg9mAgWihzTc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=EoTvuy53Ia71c2iLlVyzLw&_nc_ss=8&oh=00_AfyA8HFNC3sQ6t2PVbaJcIXPG6-xxsM3xP-oCvJlzFEyXw&oe=69BB43BD" alt="Grill Chicken Baby"/><div class="m-card-body"><p class="m-card-cat">Grill</p><h3 class="m-card-name">Grill Chicken Baby</h3><p class="m-card-desc">A whole baby chicken marinated in aromatic spices and grilled to perfection.</p><div class="m-card-footer"><div class="m-price">R 120</div><button class="m-add" onclick="addItem('Grill Chicken Baby - R120')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="grill"><img class="m-card-img" src="https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651343234_18052246946508640_5517448756944038007_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=109&ig_cache_key=Mzg1MjYyMDQwNTIxMTQ0NjA1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=M-GdwffvANYQ7kNvwE4Pss-&_nc_oc=Ado32aXWfHXYvOf8mJVMGhze41f1iXFRJ_twiSuPkV06AWUsDFWSuV-ukHDsbO2NlfQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_Afws3uxAL2mfppq6FkcXOSD-TdxKIUxn3tXicy7f5DvXmQ&oe=69C40DBD" alt="Grill Chicken Baby"/><div class="m-card-body"><p class="m-card-cat">Grill</p><h3 class="m-card-name">Grill Chicken Baby</h3><p class="m-card-desc">A whole baby chicken marinated in aromatic spices and grilled to perfection.</p><div class="m-card-footer"><div class="m-price">R 120</div><button class="m-add" onclick="addItem('Grill Chicken Baby - R120')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="grill"><img class="m-card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnbut-uFgmf7fJFkApB54qGJ0KDa0i-JeXxw&s" alt="Creamy Chicken Steak"/><div class="m-card-body"><p class="m-card-cat">Grill</p><h3 class="m-card-name">Creamy Chicken Steak</h3><p class="m-card-desc">Juicy grilled chicken steak smothered in a rich, velvety cream sauce.</p><div class="m-card-footer"><div class="m-price">R 130</div><button class="m-add" onclick="addItem('Creamy Chicken Steak - R130')">+ Add</button></div></div></div>
-  <div class="m-card show" data-cat="grill"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/651692748_18052253195508640_1666917478230076052_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1MjYzODk1MTAyMjc5Mzk4Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTIyNi5zZHIuQzMifQ%3D%3D&_nc_ohc=iAunLEyZCD0Q7kNvwE1tH1e&_nc_oc=AdkH1p0MKHEy1JkRKXeJ762zD32pvgiRaz6KZ4zsLwng3ystH0aEj3u_aHa9a7rgzmI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=H2GBycungqOT-LhN92sTHQ&_nc_ss=8&oh=00_AfzLnntZihou45QgM0DXdQ-pkM0wL1NYkwgCs1TVQfStZw&oe=69BB532B" alt="Crispy Tandoori Chicken Chips"/><div class="m-card-body"><p class="m-card-cat">Grill</p><h3 class="m-card-name">Crispy Tandoori Chicken &amp; Chips (Medium)</h3><p class="m-card-desc">Tandoori-spiced crispy chicken paired with a medium portion of golden chips.</p><div class="m-card-footer"><div class="m-price">R 90</div><button class="m-add" onclick="addItem('Crispy Tandoori Chicken & Chips - R90')">+ Add</button></div></div></div>
+  <div class="m-card show" data-cat="grill"><img class="m-card-img" src="https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/651692748_18052253195508640_1666917478230076052_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=105&ig_cache_key=Mzg1MjYzODk1MTAyMjc5Mzk4Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTIyNi5zZHIuQzMifQ%3D%3D&_nc_ohc=2b3pCcEq-S8Q7kNvwFMG60Y&_nc_oc=AdpHd2yjvUU4voy_wb3D9Lhn7UryDZPaHNj3-OGWns6qH4G9rtnwl0-ySXJEOqKynzY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_Afz9QyEO5vQYjuCtRJMkYmlEwR5ulgAvYd9jgwykPAVZPA&oe=69C41D2B" alt="Crispy Tandoori Chicken Chips"/><div class="m-card-body"><p class="m-card-cat">Grill</p><h3 class="m-card-name">Crispy Tandoori Chicken &amp; Chips (Medium)</h3><p class="m-card-desc">Tandoori-spiced crispy chicken paired with a medium portion of golden chips.</p><div class="m-card-footer"><div class="m-price">R 90</div><button class="m-add" onclick="addItem('Crispy Tandoori Chicken & Chips - R90')">+ Add</button></div></div></div>
   <div class="m-card show" data-cat="grill"><img class="m-card-img" src="https://i.pinimg.com/736x/cb/f2/6f/cbf26f5ffc07b581c87515fa20bb628d.jpg" alt="Healthy Grilled Chicken"/><div class="m-card-body"><p class="m-card-cat">Grill</p><h3 class="m-card-name">Healthy Grilled Chicken</h3><p class="m-card-desc">Lean, flame-grilled chicken breast — light, wholesome, and full of flavour.</p><div class="m-card-footer"><div class="m-price">R 100</div><button class="m-add" onclick="addItem('Healthy Grilled Chicken - R100')">+ Add</button></div></div></div>
   </div>
-
   <!-- ORDER PANEL -->
   <div id="orderPanel" style="display:none;max-width:640px;margin:40px auto 0;background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 8px 40px rgba(0,0,0,.1);">
     <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);margin-bottom:14px;">🛒 Your Selections</h3>
@@ -686,180 +664,86 @@ footer{background:#0a0603;padding:55px 5% 36px;text-align:center;border-top:1px 
 
 <script>
 const DAILY = {
-  0: {
-    title:"Sunday <em>Special</em>",
-    image:"https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80",
-    imgTitle:"Sunday — Party Catering Day",
-    imgSub:"Kitchen closed for regular orders · Party bookings welcome",
-    closed: true,
-    closedMsg:"🎉 Sunday is reserved for <strong>Party Food Preparation</strong>. The kitchen is closed for regular orders.<br><br>Want party catering? <strong>Place your order in advance!</strong> From Monday the kitchen resumes normal service.",
-    items:[
-      {icon:"🎉",name:"PARTY CATERING AVAILABLE",desc:"Book your party food order in advance — we prepare on Sundays!",price:"Call us"},
-      {icon:"🍱",name:"BULK MEAL ORDERS",desc:"Large group orders welcome — enquire for custom packages",price:"Call us"}
-    ]
-  },
-  1: {
-    title:"Monday <em>Meal</em>",
-    image:"https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/652006213_18052633151508640_5699257629207723357_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg1MzU5NTIyODY3ODkzNjc4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkxOS5zZHIuQzMifQ%3D%3D&_nc_ohc=lHD9_EjDcUsQ7kNvwFtdvXf&_nc_oc=AdmnbzFILBb9FUfSZ1zZiC5mCj0VUr-fHkOnnz0Ae0xWZDOaCcHqO3Tnw8Y4bq_Ri2g&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=4mBNQPEvBTqz90sZuToDNQ&_nc_ss=8&oh=00_AfwYK7y-_Nr5wCmYw8Eb0s27n_XU7xWNOtulXRk-b2CILQ&oe=69BCE727",
-    items:[
-      {icon:"🍲",name:"Chana Fry Daal + 2 Roti",desc:"Special Slow Coocked Fry Chana Daal served with 2 Roti",price:"R 65"},
-      {icon:"🍲",name:"1 Hot Dog",desc:"Hot Dog, slow-cooked",price:"R 30"}
-      
-    ]
-  },
-  2: {
-    title:"Braai <em>Tuesday</em>",
-    image:"https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651472507_18052823651508640_8547451587859963002_n.heic?stp=dst-jpg_e35_p640x640_sh0.08_tt6&_nc_cat=109&ig_cache_key=Mzg1NDIyNTUzMDM4MDEyNDE3Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzl4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=LqQ6kTyyVkAQ7kNvwEI4TDD&_nc_oc=AdnCmP-Uv_jfnhcqZzvbGS0pb1wqBfWJzYZ8w07GpEcz2R2bsQKM3kqDL5IqNsln0jw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=LhUeBX_LqbksA0yHCeEX3A&_nc_ss=8&oh=00_AfzbF20ltFonFLzy3N7Z5yBUZeFzOc7YlxMGxXaWnPP6Ug&oe=69BDFAF8",
-    items:[
-      {icon:"🍞",name:"2 Chicken Seekh Kababs + 1 Roti",desc:"Chicken Seekh Kabab",price:"R 60"},
-      {icon:"🫓",name:"Green Pepper & Chicken Curry + 2 Roti",desc:"Green Pepper & Chicken Curry",price:"R 75"},
-      {icon:"🥘",name:"Matar Pulao + Raita ",desc:"Matar Pulao",price:"R 60"}
-    ]
-  },
-  3: {
-    title:"Wednesday <em>Wonders</em>",
-    image:"https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/654202567_18053272787508640_3602722814052904433_n.heic?stp=dst-jpg_e35_p640x640_sh0.08_tt6&_nc_cat=101&ig_cache_key=Mzg1NTQyNDY1MTI2Njg5Nzc0MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzl4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=QZfMvX67W78Q7kNvwEnoGaW&_nc_oc=AdlaQdnHkzNHKgLlqA_kcHfDPoz2d2DIe7KXqYVOpoeU1kNbKoKEJEdNtYa9KsC9LFc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=E5V7kROxIvREO6_JzOAINA&_nc_ss=8&oh=00_AfwdrVssvncB8GtBIByrYPB_4RUySXxrh9eaGa7YO1ucYw&oe=69C01AE2",
-    items:[
-      {icon:"🥘",name:"BITTER GOURD & ONION + 2 Roti",desc:"KARELLA PAYAAZ + 2 Roti",price:"R 60"},
-    ]
-  },
-  4: {
-    title:"Thursday <em>Meal</em>",
-    image:"https://instagram.fskt5-2.fna.fbcdn.net/v/t39.30808-6/654911697_1254634910212438_5813159458649651647_n.jpg?stp=c0.128.1024.1280a_dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1NTYzMDU5NTcwNDQzNTY2Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwMjR4MTUzNi5zZHIuQzMifQ%3D%3D&_nc_ohc=mIm4bhyRcsEQ7kNvwGhjzUC&_nc_oc=AdpGSZHWMtQwg9z-n407XW9NVlpkXmvse95NaYHjMryWTy_HOMYni9GibT1zvA6iecw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=GdYhljkvh5rirv4BigU0KQ&_nc_ss=8&oh=00_AfyxjAR7IS41I-YNEuBAXFkklJyAM5DZ2HNcsrop0J2i3g&oe=69C19293",
-    items:[
-      {icon:"🥘",name:"BITTER GOURD & ONION + 2 Roti",desc:"Karella Payyaz served with 2 Roti",price:"R 60"},
-      {icon:"🫓",name:"DURBAN CHICKEN CURRY + 2 Roti",desc:"Durban Chicken Curry served with 2 roti",price:"R 80"},
-      {icon:"🫓",name:"BHINDI(Okra) & ONION",desc:"Bhindi served with 2 Roti",price:"R 65"},
-    ]
-  },
-  5: {
-    title:"Friday Jumu'ah <em>Special</em>",
-    image:"https://instagram.fskt5-1.fna.fbcdn.net/v/t39.30808-6/650530023_1249986164010646_4055846109534893365_n.jpg?stp=dst-jpg_e35_s640x640_sh0.08_tt6&_nc_cat=110&ig_cache_key=Mzg1MTIzNjcyMTY5NTM0MTE3OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE1MzZ4MTAyNC5zZHIuQzMifQ%3D%3D&_nc_ohc=jxFFlTQIgHUQ7kNvwE7iYYM&_nc_oc=Adl5cu2NJP7sok5D4wEwfFnfXq0kjPqgLuA1Yo6aJpmlFeDjvupKof885GhHLMPtSYw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uPRlqJnZgYlkpAHCYOlyLw&_nc_ss=8&oh=00_AfyFLdKPDBctRICZ3f8XpNON40n2-YqNRthRcYbW8rgvMQ&oe=69B8D29F",
-    imgTitle:"Friday Jumu'ah Special",
-    imgSub:"Weekly Friday tradition · 100% Halal",
-    items:[
-      {icon:"🍖",name:"Mutton Seekh Kabab",desc:"Signature Friday slow-cooked Kabab",price:"R 60"},
-      {icon:"🍖",name:"Mutton Pulao + Raita & Kaju (umber)",desc:"Mutton Pulao with cooling rayta",price:"R 80"},
-      {icon:"🥣",name:"Soji",desc:"Meetha",price:"R 30"}
-    ]
-  },
-  6: {
-    title:"Saturday <em>Meal</em>",
-    image:"https://instagram.fskt5-1.fna.fbcdn.net/v/t39.30808-6/651053084_1250864053922857_2088266485160561366_n.jpg?stp=c0.128.1024.1280a_dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzg1MjA1NTQ5NTI4NTY1NjI1MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwMjR4MTUzNi5zZHIuQzMifQ%3D%3D&_nc_ohc=ndmFsKFRUPAQ7kNvwFkC2dX&_nc_oc=AdkTD1FKeT3-cuab1YwKabxBauYP6u88quFEuF4GtvOOzsJQdR6n9HmUymxaw2gw1Jw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=q4b2tHkQwBof-cNZcnm__Q&_nc_ss=8&oh=00_AfzVPhGAH4kC40c5T2B4GxO2GiwrXJ5GwOJOWlSft-Ik6Q&oe=69BA7047",
-    imgTitle:"Saturday Meal Special",
-    imgSub:"Weekend treat · Order early to avoid missing out",
-    items:[
-      {icon:"🍔",name:"Spicy Mayo Chicken Burger",desc:"Crispy & Juicy",price:"R 45"},
-      {icon:"🍖",name:"Beef Nihari + 2 Roti",desc:"Tender slow-cooked beef in a rich spicy curry with 2 fresh rotis",price:"R 75"},
-      {icon:"🥣",name:"Gajjar Halwa",desc:"Sweet traditional carrot dessert",price:"R 40"}
-    ]
-  }
+  0:{title:"Sunday <em>Special</em>",image:"https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80",imgTitle:"Sunday — Party Catering Day",imgSub:"Kitchen closed for regular orders · Party bookings welcome",closed:true,closedMsg:"🎉 Sunday is reserved for <strong>Party Food Preparation</strong>. The kitchen is closed for regular orders.<br><br>Want party catering? <strong>Place your order in advance!</strong> From Monday the kitchen resumes normal service.",items:[{icon:"🎉",name:"PARTY CATERING AVAILABLE",desc:"Book your party food order in advance — we prepare on Sundays!",price:"Call us"},{icon:"🍱",name:"BULK MEAL ORDERS",desc:"Large group orders welcome — enquire for custom packages",price:"Call us"}]},
+  1:{title:"Monday <em>Meal</em>",image:"https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/652006213_18052633151508640_5699257629207723357_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg1MzU5NTIyODY3ODkzNjc4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkxOS5zZHIuQzMifQ%3D%3D&_nc_ohc=lHD9_EjDcUsQ7kNvwFtdvXf&_nc_oc=AdmnbzFILBb9FUfSZ1zZiC5mCj0VUr-fHkOnnz0Ae0xWZDOaCcHqO3Tnw8Y4bq_Ri2g&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=4mBNQPEvBTqz90sZuToDNQ&_nc_ss=8&oh=00_AfwYK7y-_Nr5wCmYw8Eb0s27n_XU7xWNOtulXRk-b2CILQ&oe=69BCE727",items:[{icon:"🍲",name:"Chana Fry Daal + 2 Roti",desc:"Special Slow Cooked Fry Chana Daal served with 2 Roti",price:"R 65"},{icon:"🍲",name:"1 Hot Dog",desc:"Hot Dog, slow-cooked",price:"R 30"}]},
+  2:{title:"Braai <em>Tuesday</em>",image:"https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651472507_18052823651508640_8547451587859963002_n.heic?stp=dst-jpg_e35_p640x640_sh0.08_tt6&_nc_cat=109&ig_cache_key=Mzg1NDIyNTUzMDM4MDEyNDE3Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzl4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=LqQ6kTyyVkAQ7kNvwEI4TDD&_nc_oc=AdnCmP-Uv_jfnhcqZzvbGS0pb1wqBfWJzYZ8w07GpEcz2R2bsQKM3kqDL5IqNsln0jw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=LhUeBX_LqbksA0yHCeEX3A&_nc_ss=8&oh=00_AfzbF20ltFonFLzy3N7Z5yBUZeFzOc7YlxMGxXaWnPP6Ug&oe=69BDFAF8",items:[{icon:"🍞",name:"2 Chicken Seekh Kababs + 1 Roti",desc:"Chicken Seekh Kabab",price:"R 60"},{icon:"🫓",name:"Green Pepper & Chicken Curry + 2 Roti",desc:"Green Pepper & Chicken Curry",price:"R 75"},{icon:"🥘",name:"Matar Pulao + Raita",desc:"Matar Pulao",price:"R 60"}]},
+  3:{title:"Wednesday <em>Wonders</em>",image:"https://instagram.fskt5-2.fna.fbcdn.net/v/t51.82787-15/654202567_18053272787508640_3602722814052904433_n.heic?stp=dst-jpg_e35_p640x640_sh0.08_tt6&_nc_cat=101&ig_cache_key=Mzg1NTQyNDY1MTI2Njg5Nzc0MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzl4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=QZfMvX67W78Q7kNvwEnoGaW&_nc_oc=AdlaQdnHkzNHKgLlqA_kcHfDPoz2d2DIe7KXqYVOpoeU1kNbKoKEJEdNtYa9KsC9LFc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=E5V7kROxIvREO6_JzOAINA&_nc_ss=8&oh=00_AfwdrVssvncB8GtBIByrYPB_4RUySXxrh9eaGa7YO1ucYw&oe=69C01AE2",items:[{icon:"🥘",name:"BITTER GOURD & ONION + 2 Roti",desc:"KARELLA PAYAAZ + 2 Roti",price:"R 60"}]},
+  4:{title:"Thursday <em>Meal</em>",image:"https://instagram.fskt5-2.fna.fbcdn.net/v/t39.30808-6/654911697_1254634910212438_5813159458649651647_n.jpg?stp=c0.128.1024.1280a_dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzg1NTYzMDU5NTcwNDQzNTY2Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwMjR4MTUzNi5zZHIuQzMifQ%3D%3D&_nc_ohc=mIm4bhyRcsEQ7kNvwGhjzUC&_nc_oc=AdpGSZHWMtQwg9z-n407XW9NVlpkXmvse95NaYHjMryWTy_HOMYni9GibT1zvA6iecw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-2.fna&_nc_gid=GdYhljkvh5rirv4BigU0KQ&_nc_ss=8&oh=00_AfyxjAR7IS41I-YNEuBAXFkklJyAM5DZ2HNcsrop0J2i3g&oe=69C19293",items:[{icon:"🥘",name:"BITTER GOURD & ONION + 2 Roti",desc:"Karella Payyaz served with 2 Roti",price:"R 60"},{icon:"🫓",name:"DURBAN CHICKEN CURRY + 2 Roti",desc:"Durban Chicken Curry served with 2 roti",price:"R 80"},{icon:"🫓",name:"BHINDI(Okra) & ONION",desc:"Bhindi served with 2 Roti",price:"R 65"}]},
+  5:{title:"Friday Jumu'ah <em>Special</em>",image:"https://instagram.fskt5-1.fna.fbcdn.net/v/t39.30808-6/650530023_1249986164010646_4055846109534893365_n.jpg?stp=dst-jpg_e35_s640x640_sh0.08_tt6&_nc_cat=110&ig_cache_key=Mzg1MTIzNjcyMTY5NTM0MTE3OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE1MzZ4MTAyNC5zZHIuQzMifQ%3D%3D&_nc_ohc=jxFFlTQIgHUQ7kNvwE7iYYM&_nc_oc=Adl5cu2NJP7sok5D4wEwfFnfXq0kjPqgLuA1Yo6aJpmlFeDjvupKof885GhHLMPtSYw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uPRlqJnZgYlkpAHCYOlyLw&_nc_ss=8&oh=00_AfyFLdKPDBctRICZ3f8XpNON40n2-YqNRthRcYbW8rgvMQ&oe=69B8D29F",imgTitle:"Friday Jumu'ah Special",imgSub:"Weekly Friday tradition · 100% Halal",items:[{icon:"🍖",name:"Mutton Seekh Kabab",desc:"Signature Friday slow-cooked Kabab",price:"R 60"},{icon:"🍖",name:"Mutton Pulao + Raita & Kaju (umber)",desc:"Mutton Pulao with cooling rayta",price:"R 80"},{icon:"🥣",name:"Soji",desc:"Meetha",price:"R 30"}]},
+  6:{title:"Saturday <em>Meal</em>",image:"https://instagram.fskt5-1.fna.fbcdn.net/v/t51.82787-15/651448868_18052246352508640_8127548331863998034_n.heic?stp=dst-jpg_e35_sh2.08_tt6&_nc_cat=106&ig_cache_key=Mzg1MjYxODExOTkxMTM2Njk5OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNTJ4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=UObG_xVDpFQQ7kNvwEUmhA_&_nc_oc=AdqlQtY9uynulLSRenW5hr2jcIsE8EIss3sKbSC46mTGDO-r8ELbHOHnDSs-xNLTuaI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fskt5-1.fna&_nc_gid=uTMPRb4uAbsebP3cvJTUCg&_nc_ss=7a30f&oh=00_AfwhcT7ZIIMAbhafIxpppHCs7LQiV1yDCK7w99x94BHrlQ&oe=69C430E3",imgTitle:"Saturday Meal Special",imgSub:"Weekend treat · Order early to avoid missing out",items:[{icon:"🍔",name:"Spicy Mayo Chicken Burger",desc:"Crispy & Juicy",price:"R 45"},{icon:"🍖",name:"Beef Nihari + 2 Roti",desc:"Tender slow-cooked beef in a rich spicy curry with 2 fresh rotis",price:"R 75"},{icon:"🥣",name:"Gajjar Halwa",desc:"Sweet traditional carrot dessert",price:"R 40"}]}
 };
 
-const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const _saNow  = new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Johannesburg'}));
-const _dayIdx = _saNow.getDay();
-const _menu   = DAILY[_dayIdx];
-const _dayName= DAY_NAMES[_dayIdx];
-const _dateStr= _saNow.toLocaleDateString('en-ZA',{timeZone:'Africa/Johannesburg',weekday:'long',year:'numeric',month:'long',day:'numeric'});
+const DAY_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const _saNow=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Johannesburg'}));
+const _dayIdx=_saNow.getDay();
+const _menu=DAILY[_dayIdx];
+const _dayName=DAY_NAMES[_dayIdx];
+const _dateStr=_saNow.toLocaleDateString('en-ZA',{timeZone:'Africa/Johannesburg',weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-/* ── Header offset ── */
 function setBodyOffset(){
-  const h = document.getElementById('siteHeader').offsetHeight;
-  document.body.style.paddingTop = h+'px';
-  document.documentElement.style.scrollPaddingTop = h+'px';
-  document.getElementById('mobileMenu').style.top = h+'px';
+  const h=document.getElementById('siteHeader').offsetHeight;
+  document.body.style.paddingTop=h+'px';
+  document.documentElement.style.scrollPaddingTop=h+'px';
+  document.getElementById('mobileMenu').style.top=h+'px';
 }
-window.addEventListener('load', setBodyOffset);
-window.addEventListener('resize', setBodyOffset);
+window.addEventListener('load',setBodyOffset);
+window.addEventListener('resize',setBodyOffset);
 
-/* ── Ticker ── */
 (function buildTicker(){
-  document.getElementById('dayLabel').textContent = _dayName.toUpperCase();
-  const chunk = _menu.items.map(i=>
-    `<span class="t-item">🍽️ <strong>${i.name}</strong> <span class="t-price">${i.price}</span></span><span class="t-dot">◆</span>`
-  ).join('');
-  document.getElementById('tickerTrack').innerHTML = chunk+chunk;
+  document.getElementById('dayLabel').textContent=_dayName.toUpperCase();
+  const chunk=_menu.items.map(i=>`<span class="t-item">🍽️ <strong>${i.name}</strong> <span class="t-price">${i.price}</span></span><span class="t-dot">◆</span>`).join('');
+  document.getElementById('tickerTrack').innerHTML=chunk+chunk;
 })();
 
-/* ── Modal — MOBILE FIXED VERSION ── */
 function openModal(){
-  document.getElementById('mTag').textContent      = _dayName+"'s Special";
-  document.getElementById('mTitle').innerHTML      = _menu.title;
-  document.getElementById('mDate').textContent     = _dateStr;
-  document.getElementById('mImg').src              = _menu.image;
-  document.getElementById('mImg').alt              = _menu.imgTitle||'';
-  document.getElementById('mImgTitle').textContent = _menu.imgTitle||'';
-  document.getElementById('mImgSub').textContent   = _menu.imgSub||'';
-
-  /* Sunday closed notice */
-  const notice = document.getElementById('mClosedNotice');
-  if(_menu.closed){
-    notice.innerHTML = `<div class="sunday-notice">${_menu.closedMsg}</div>`;
-    notice.style.display = 'block';
-  } else {
-    notice.style.display = 'none';
-  }
-
-  document.getElementById('mItems').innerHTML = _menu.items.map(x=>`
+  document.getElementById('mTag').textContent=_dayName+"'s Special";
+  document.getElementById('mTitle').innerHTML=_menu.title;
+  document.getElementById('mDate').textContent=_dateStr;
+  document.getElementById('mImg').src=_menu.image;
+  document.getElementById('mImg').alt=_menu.imgTitle||'';
+  document.getElementById('mImgTitle').textContent=_menu.imgTitle||'';
+  document.getElementById('mImgSub').textContent=_menu.imgSub||'';
+  const notice=document.getElementById('mClosedNotice');
+  if(_menu.closed){notice.innerHTML=`<div class="sunday-notice">${_menu.closedMsg}</div>`;notice.style.display='block';}
+  else{notice.style.display='none';}
+  document.getElementById('mItems').innerHTML=_menu.items.map(x=>`
     <div class="modal-item">
-      <div class="mi-l">
-        <span class="mi-icon">${x.icon}</span>
-        <div>
-          <div class="mi-name">${x.name.trim()}</div>
-          <div class="mi-desc">${x.desc}</div>
-        </div>
+      <div class="mi-l"><span class="mi-icon">${x.icon}</span>
+        <div><div class="mi-name">${x.name.trim()}</div><div class="mi-desc">${x.desc}</div></div>
       </div>
       <div class="mi-price">${x.price}</div>
     </div>`).join('');
-
-  const overlay = document.getElementById('todayModal');
+  const overlay=document.getElementById('todayModal');
   overlay.classList.add('open');
-  overlay.scrollTop = 0;
-  /* No body overflow change — causes issues on iOS Safari */
+  overlay.scrollTop=0;
 }
 
-function closeModal(){
-  document.getElementById('todayModal').classList.remove('open');
-}
+function closeModal(){document.getElementById('todayModal').classList.remove('open');}
+function overlayClick(e){if(e.target===document.getElementById('todayModal'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeEidPopup();}});
 
-function overlayClick(e){
-  if(e.target === document.getElementById('todayModal')) closeModal();
-}
-
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
-
-/* Auto-open 800ms after load */
-window.addEventListener('load', ()=>{ setTimeout(openModal, 800); });
-
-/* ── WhatsApp — Today's order ── */
 function orderTodayOnWhatsApp(){
-  const lines = _menu.items.map(i=>`  • ${i.name} — ${i.price}`).join('\n');
-  const msg = `*🛒 Order Request – ToorYousuf*\n\n*📅 ${_dayName}'s Specials:*\n${lines}\n\n_Please confirm availability & total. JazakAllah Khair! 🙏_`;
+  const lines=_menu.items.map(i=>`  • ${i.name} — ${i.price}`).join('\n');
+  const msg=`*🛒 Order Request – ToorYousuf*\n\n*📅 ${_dayName}'s Specials:*\n${lines}\n\n_Please confirm availability & total. JazakAllah Khair! 🙏_`;
   window.open(`https://wa.me/27670532477?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
-/* ── Navigation ── */
-function toggleMob(){ document.getElementById('mobileMenu').classList.toggle('open'); }
-function closeMob() { document.getElementById('mobileMenu').classList.remove('open'); }
-document.addEventListener('click', e=>{
-  const m = document.getElementById('mobileMenu');
-  if(m.classList.contains('open') &&
-     !document.getElementById('navbar').contains(e.target) &&
-     !m.contains(e.target)) m.classList.remove('open');
+function toggleMob(){document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMob(){document.getElementById('mobileMenu').classList.remove('open');}
+document.addEventListener('click',e=>{
+  const m=document.getElementById('mobileMenu');
+  if(m.classList.contains('open')&&!document.getElementById('navbar').contains(e.target)&&!m.contains(e.target))m.classList.remove('open');
 });
 
-/* ── Menu filter — supports multi-category data-cat ── */
-function filterMenu(cat, btn){
+function filterMenu(cat,btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.m-card').forEach(c=>{
-    const cats = (c.dataset.cat||'').split(' ');
-    c.classList.toggle('show', cat==='all' || cats.includes(cat));
+    const cats=(c.dataset.cat||'').split(' ');
+    c.classList.toggle('show',cat==='all'||cats.includes(cat));
   });
 }
 
-/* ── Add to order ── */
 const orderItems=[];
 function renderList(){
   const ul=document.getElementById('orderList');
@@ -877,30 +761,53 @@ function addItem(name){
   document.getElementById('orderPanel').style.display='block';
   renderList();
   const t=document.getElementById('toast');
-  t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)';
-  setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(20px)'; },2200);
+  t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},2200);
 }
 function removeItem(i){
   orderItems.splice(i,1);
-  if(!orderItems.length) document.getElementById('orderPanel').style.display='none';
+  if(!orderItems.length)document.getElementById('orderPanel').style.display='none';
   renderList();
 }
 
-/* ── Order form → WhatsApp ── */
 function submitOrder(){
-  const name =document.getElementById('fname').value.trim();
+  const name=document.getElementById('fname').value.trim();
   const phone=document.getElementById('fphone').value.trim();
   if(!name||!phone){alert('Please enter your name and phone number.');return;}
   const msg=`*🛒 New Order – ToorYousuf*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${document.getElementById('faddress').value||'Not provided'}\n*Category:* ${document.getElementById('fcategory').value||'Not selected'}\n\n*Order:*\n${document.getElementById('fmessage').value||'No items listed'}`;
   window.open(`https://wa.me/27670532477?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
-/* ── Scroll reveal ── */
 const obs=new IntersectionObserver(
   entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),
   {threshold:.08}
 );
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ══ EID POPUP ══ */
+(function(){
+  sessionStorage.removeItem('eid_fitr_shown'); // remove this line after Eid is over
+  if(!sessionStorage.getItem('eid_fitr_shown')){
+    var o=document.getElementById('eidOverlay');
+    o.style.display='flex';
+    sessionStorage.setItem('eid_fitr_shown','1');
+  }
+  document.getElementById('eidOverlay').addEventListener('click',function(e){
+    if(e.target===this)closeEidPopup();
+  });
+})();
+
+function closeEidPopup(){
+  var o=document.getElementById('eidOverlay');
+  o.style.transition='opacity .3s ease';
+  o.style.opacity='0';
+  setTimeout(function(){o.style.display='none';o.style.opacity='1';},300);
+}
+
+/* Auto-open daily menu 800ms after load — AFTER Eid popup */
+window.addEventListener('load',function(){
+  setTimeout(openModal,2000);
+});
 </script>
 </body>
 </html>
