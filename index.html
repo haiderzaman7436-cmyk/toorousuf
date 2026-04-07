@@ -663,190 +663,85 @@ footer{background:#0a0603;padding:55px 5% 36px;text-align:center;border-top:1px 
 <div id="toast" style="position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:#2d5a3d;color:#fff;padding:12px 26px;border-radius:30px;font-size:.88rem;font-weight:700;z-index:99999;opacity:0;transition:all .4s;pointer-events:none;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.2);">✅ Item added to your order!</div>
 
 <script>
+<script>
 const DAILY = {
-  {
-  "0": {
-    "title": "Sunday <em>Special</em>",
-    "image": "https://ik.imagekit.io/q3q7cyopc/breakfast.jpeg",
-    "imgTitle": "Sunday — Party Catering Day",
-    "imgSub": "Kitchen closed for regular orders · Party bookings welcome",
-    "closed": true,
-    "closedMsg": "🎉 Sunday is reserved for <strong>Party Food Preparation</strong>. The kitchen is closed for regular orders.<br><br>Want party catering? <strong>Place your order in advance!</strong> From Monday the kitchen resumes normal service.",
-    "items": [
-      {
-        "icon": "🎉",
-        "name": "PARTY CATERING AVAILABLE",
-        "desc": "Book your party food order in advance — we prepare on Sundays!",
-        "price": "Call us"
-      },
-      {
-        "icon": "🍱",
-        "name": "BULK MEAL ORDERS",
-        "desc": "Large group orders welcome — enquire for custom packages",
-        "price": "Call us"
-      }
+  0: {
+    title: "Sunday <em>Special</em>",
+    image: "https://ik.imagekit.io/q3q7cyopc/breakfast.jpeg",
+    imgTitle: "Sunday — Party Catering Day",
+    imgSub: "Kitchen closed for regular orders · Party bookings welcome",
+    closed: true,
+    closedMsg: "🎉 Sunday is reserved for <strong>Party Food Preparation</strong>. The kitchen is closed for regular orders.<br><br>Want party catering? <strong>Place your order in advance!</strong> From Monday the kitchen resumes normal service.",
+    items: [
+      {icon:"🎉",name:"PARTY CATERING AVAILABLE",desc:"Book your party food order in advance — we prepare on Sundays!",price:"Call us"},
+      {icon:"🍱",name:"BULK MEAL ORDERS",desc:"Large group orders welcome — enquire for custom packages",price:"Call us"}
     ]
   },
-  "1": {
-    "title": "Monday <em>Meal</em>",
-    "image": "https://ik.imagekit.io/q3q7cyopc/monday.jpeg",
-    "items": [
-      {
-        "icon": "🫓",
-        "name": "Spanish Paratha",
-        "desc": "Special homemade paratha",
-        "price": "R 45"
-      },
-      {
-        "icon": "🫓",
-        "name": "Aloo Paratha",
-        "desc": "Special homemade paratha",
-        "price": "R 45"
-      },
-      {
-        "icon": "🫓",
-        "name": "Chicken Fry Daal + 2 Roti",
-        "desc": "Slow-cooked chana fry daal served with 2 rotis",
-        "price": "R 65"
-      }
+
+  1: {
+    title:"Monday <em>Meal</em>",
+    image:"https://ik.imagekit.io/q3q7cyopc/monday.jpeg",
+    items:[
+      {icon:"🫓",name:"Spanish Paratha",desc:"Special homemade paratha",price:"R 45"},
+      {icon:"🫓",name:"Aloo Paratha",desc:"Special homemade paratha",price:"R 45"},
+      {icon:"🫓",name:"Chicken Fry Daal + 2 Roti",desc:"Slow cooked chana fry daal served with 2 rotis",price:"R 65"}
     ]
   },
-  "2": {
-    "title": "Braai Tuesday",
-    "image": "https://ik.imagekit.io/q3q7cyopc/mangal.jpeg",
-    "items": [
-      {
-        "icon": "🫓",
-        "name": "Aloo Gosht + 2 Roti",
-        "desc": "Special homemade slow-cooked Aloo Gosht served with 2 rotis",
-        "price": "R 85"
-      },
-      {
-        "icon": "🫓",
-        "name": "Green Salad",
-        "desc": "Special fresh homemade salad",
-        "price": "R 30"
-      },
-      {
-        "icon": "🫓",
-        "name": "Kebab Chutney + 2 Roti",
-        "desc": "Special homemade freshly prepared kebab chutney served with 2 rotis",
-        "price": "R 70"
-      },
-      {
-        "icon": "🫓",
-        "name": "Zarda",
-        "desc": "Special sweet rice with dry fruits and nuts",
-        "price": "R 60"
-      }
+
+  2: {
+    title: "Braai Tuesday",
+    image: "https://ik.imagekit.io/q3q7cyopc/mangal.jpeg",
+    items: [
+      {icon:"🫓",name:"Aloo Gosht + 2 Roti",desc:"Slow-cooked Aloo Gosht with 2 rotis",price:"R 85"},
+      {icon:"🫓",name:"Green Salad",desc:"Fresh homemade salad",price:"R 30"},
+      {icon:"🫓",name:"Kebab Chutney + 2 Roti",desc:"Fresh kebab chutney with 2 rotis",price:"R 70"},
+      {icon:"🫓",name:"Zarda",desc:"Sweet rice with dry fruits and nuts",price:"R 60"}
     ]
   },
-  "3": {
-    "title": "Wednesday <em>Wonders</em>",
-    "image": "https://ik.imagekit.io/q3q7cyopc/wenesday.jpeg",
-    "items": [
-      {
-        "icon": "🫓",
-        "name": "Bhindi With Onions + 2 Roti",
-        "desc": "Slow-cooked bhindi served with 2 rotis",
-        "price": "R 65"
-      },
-      {
-        "icon": "🫓",
-        "name": "Karela with Onions + 2 Roti",
-        "desc": "Special homemade karela with onions served with 2 rotis",
-        "price": "R 65"
-      },
-      {
-        "icon": "🫓",
-        "name": "Chicken With Bhindi + 2 Rotis",
-        "desc": "Halal homemade chicken with bhindi served with 2 rotis",
-        "price": "R 85"
-      },
-      {
-        "icon": "🫓",
-        "name": "Green Salad",
-        "desc": "Fresh green salad",
-        "price": "R 30"
-      }
+
+  3: {
+    title:"Wednesday <em>Wonders</em>",
+    image:"https://ik.imagekit.io/q3q7cyopc/wenesday.jpeg",
+    items:[
+      {icon:"🫓",name:"Bhindi + 2 Roti",desc:"Bhindi with onions served with 2 rotis",price:"R 65"},
+      {icon:"🫓",name:"Karela + 2 Roti",desc:"Karela with onions served with 2 rotis",price:"R 65"},
+      {icon:"🫓",name:"Chicken Bhindi + 2 Roti",desc:"Chicken with bhindi served with 2 rotis",price:"R 85"},
+      {icon:"🫓",name:"Green Salad",desc:"Fresh green salad",price:"R 30"}
     ]
   },
-  "4": {
-    "title": "Thursday <em>Meal</em>",
-    "image": "https://instagram.fskt5-2.fna.fbcdn.net/...",
-    "items": [
-      {
-        "icon": "🥘",
-        "name": "Bitter Gourd & Onion + 2 Roti",
-        "desc": "Karela payyaz served with 2 rotis",
-        "price": "R 60"
-      },
-      {
-        "icon": "🫓",
-        "name": "Durban Chicken Curry + 2 Roti",
-        "desc": "Durban chicken curry served with 2 rotis",
-        "price": "R 80"
-      },
-      {
-        "icon": "🫓",
-        "name": "Bhindi (Okra) & Onion + 2 Roti",
-        "desc": "Bhindi served with 2 rotis",
-        "price": "R 65"
-      }
+
+  4: {
+    title:"Thursday <em>Meal</em>",
+    image:"https://instagram.fskt5-2.fna.fbcdn.net/...",
+    items:[
+      {icon:"🥘",name:"Bitter Gourd & Onion + 2 Roti",desc:"Karela payyaz with 2 rotis",price:"R 60"},
+      {icon:"🫓",name:"Durban Chicken Curry + 2 Roti",desc:"Chicken curry with 2 rotis",price:"R 80"},
+      {icon:"🫓",name:"Bhindi & Onion + 2 Roti",desc:"Bhindi with onions",price:"R 65"}
     ]
   },
-  "5": {
-    "title": "Friday Jumu'ah <em>Special</em>",
-    "image": "https://ik.imagekit.io/q3q7cyopc/friday.jpeg",
-    "items": [
-      {
-        "icon": "🫓",
-        "name": "Chicken Biryani + Raita",
-        "desc": "Signature Friday slow-cooked chicken biryani",
-        "price": "R 75"
-      },
-      {
-        "icon": "🫓",
-        "name": "Mutton Biryani + Raita",
-        "desc": "Mutton biryani with cooling raita",
-        "price": "R 85"
-      },
-      {
-        "icon": "🫓",
-        "name": "Chicken Akhni + Raita",
-        "desc": "Special chicken akhni rice served with raita",
-        "price": "R 70"
-      }
+
+  5: {
+    title:"Friday Jumu'ah <em>Special</em>",
+    image:"https://ik.imagekit.io/q3q7cyopc/friday.jpeg",
+    items:[
+      {icon:"🫓",name:"Chicken Biryani + Raita",desc:"Slow-cooked biryani",price:"R 75"},
+      {icon:"🫓",name:"Mutton Biryani + Raita",desc:"Mutton biryani",price:"R 85"},
+      {icon:"🫓",name:"Chicken Akhni + Raita",desc:"Akhni rice",price:"R 70"}
     ]
   },
-  "6": {
-    "title": "Saturday <em>Meal</em>",
-    "image": "https://ik.imagekit.io/q3q7cyopc/Menu.jpeg",
-    "imgTitle": "Saturday Meal Special",
-    "imgSub": "Weekend treat · Order early to avoid missing out",
-    "items": [
-      {
-        "icon": "🫓",
-        "name": "Chicken Manchurian + 2 Rolls",
-        "desc": "Special and delicious",
-        "price": "R 65"
-      },
-      {
-        "icon": "🫓",
-        "name": "Chicken Manchurian + Fried Rice",
-        "desc": "Slow-cooked chicken Manchurian with fried rice",
-        "price": "R 70"
-      },
-      {
-        "icon": "🫓",
-        "name": "Chicken Chowmein",
-        "desc": "Fresh delicious chicken chowmein",
-        "price": "R 70"
-      }
+
+  6: {
+    title:"Saturday <em>Meal</em>",
+    image:"https://ik.imagekit.io/q3q7cyopc/Menu.jpeg",
+    imgTitle:"Saturday Meal Special",
+    imgSub:"Weekend treat · Order early",
+    items:[
+      {icon:"🫓",name:"Chicken Manchurian + 2 Rolls",desc:"Delicious special",price:"R 65"},
+      {icon:"🫓",name:"Chicken Manchurian + Fried Rice",desc:"With fried rice",price:"R 70"},
+      {icon:"🫓",name:"Chicken Chowmein",desc:"Fresh chowmein",price:"R 70"}
     ]
   }
-}
-
+};
 const DAY_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const _saNow=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Johannesburg'}));
 const _dayIdx=_saNow.getDay();
